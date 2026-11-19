@@ -1,0 +1,1869 @@
+:root{font-family:Inter,"Segoe UI",ui-sans-serif,system-ui,-apple-system,sans-serif;font-size:14px;color-scheme:light;--bg:#f5f6fb;--panel:#fff;--panel2:#f9f9fd;--text:#1b2035;--muted:#81889e;--edge:#e8e9f1;--hover:#f0f1f9;--accent:#7564ec;--accentFade:color-mix(in srgb,var(--accent) 12%,transparent);--shadow:0 10px 35px rgba(40,32,90,.055);--radius:14px;--gap:12px;--pad:14px;--titleSize:1.06rem;--line:1.48}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;scrollbar-color:#b8b8cc transparent}body{background:var(--bg);color:var(--text);font-size:var(--user-font,14px);line-height:var(--line)}body[data-theme=dark]{color-scheme:dark;--bg:#151722;--panel:#1c1f2b;--panel2:#232635;--text:#eef0fa;--muted:#a0a6bd;--edge:#35394b;--hover:#303449;--shadow:0 14px 35px #090b1730}body[data-theme=oled]{color-scheme:dark;--bg:#000;--panel:#0d0d0f;--panel2:#151518;--text:#f3f3f5;--muted:#9b9ba5;--edge:#26262c;--hover:#1c1c22;--shadow:none}body[data-theme=sepia]{--bg:#f3ebdc;--panel:#fff9ed;--panel2:#f6efdf;--text:#493c2c;--muted:#908273;--edge:#e5dbc6;--hover:#eee3d0}body[data-theme=slate]{color-scheme:dark;--bg:#181e29;--panel:#212938;--panel2:#283244;--text:#edf2fb;--muted:#a6b2c6;--edge:#3a4659;--hover:#303e53}body[data-theme=solarized]{--bg:#eee8d5;--panel:#fdf6e3;--panel2:#f4edd9;--text:#586e75;--muted:#839496;--edge:#d7d1bf;--hover:#e8dfc9}
+body[data-density=ultra]{--pad:7px;--gap:5px;--radius:8px}body[data-density=compact]{--pad:10px;--gap:8px;--radius:11px}body[data-density=spacious]{--pad:20px;--gap:18px;--radius:18px}body[data-font=serif]{font-family:Georgia,"Iowan Old Style",serif}body[data-font=mono]{font-family:"Cascadia Code",Consolas,monospace}
+button,input,select,textarea{font:inherit;color:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}a{color:inherit;text-decoration:none}svg{flex-shrink:0}button{border:0;background:none}button:hover{background:var(--hover)}.icon-btn{width:34px;height:34px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;color:var(--muted)}.icon-btn:hover{color:var(--text)}.icon-btn.active{color:var(--accent);background:var(--accentFade)}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--edge);border-radius:10px;padding:9px 13px;background:var(--panel);white-space:nowrap;font-weight:600}.btn:hover{background:var(--hover)}.btn.primary{background:var(--accent);border-color:var(--accent);color:white}.btn.primary:hover{filter:brightness(1.08)}.btn.danger{color:#e55069}.btn.small{padding:6px 10px;font-size:.91em}.brand{display:flex;align-items:center;gap:10px;font-size:1.04rem;font-weight:800;letter-spacing:-.35px}.brand-mark{width:29px;height:29px;border-radius:9px;background:var(--accent);color:#fff;display:inline-grid;place-items:center;box-shadow:0 4px 12px color-mix(in srgb,var(--accent) 20%,transparent)}.brand-mark svg{width:19px;height:19px}.muted{color:var(--muted)}.eyebrow{text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-size:10px;font-weight:800}.count{font-size:11px;font-weight:800;border-radius:7px;padding:2px 7px;color:var(--muted);background:var(--hover);font-variant-numeric:tabular-nums}.count.positive{background:var(--accentFade);color:var(--accent)}.empty{text-align:center;padding:50px 28px;color:var(--muted)}.empty svg{color:var(--accent);margin-bottom:12px}.empty h3{color:var(--text);font-size:1.12rem;margin:8px 0}.empty p{max-width:390px;margin:0 auto 18px}.toast{position:fixed;z-index:90;left:50%;transform:translateX(-50%);bottom:24px;background:var(--text);color:var(--panel);padding:11px 18px;border-radius:11px;box-shadow:var(--shadow);max-width:70vw;white-space:normal}.danger-text{color:#dd596f}.divider{height:1px;background:var(--edge);margin:8px 0}.spacer{flex:1}.flex{display:flex;align-items:center;gap:8px}.field{display:flex;flex-direction:column;gap:7px;font-weight:600;font-size:.93rem}.field input,.field select,.field textarea{border:1px solid var(--edge);background:var(--panel);border-radius:10px;padding:10px;min-width:0}.field textarea{resize:vertical}.field small{color:var(--muted);font-weight:400}.field-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}.pill{border:1px solid var(--edge);border-radius:999px;padding:5px 9px;display:inline-flex;align-items:center;gap:5px;font-size:.8rem;color:var(--muted)}.pill.ok{color:#27a279;border-color:#8acdb8}.statusline{font-size:.83rem;color:var(--muted)}.statusline.error{color:#d45b6c}
+/* popup */.popup{width:420px;height:575px;min-height:575px;background:var(--panel);overflow:hidden}.popup #app{height:100%;display:flex;flex-direction:column}.popup-head{padding:16px 17px 12px;border-bottom:1px solid var(--edge);display:flex;align-items:center;gap:10px}.popup-subhead{padding:11px 18px;display:flex;gap:9px;align-items:center;border-bottom:1px solid var(--edge)}.popup-scroll{overflow-y:auto;flex:1;overscroll-behavior:contain}.popup-group{padding:12px 10px 4px}.popup-group-head{padding:3px 8px 10px;display:flex;align-items:center;gap:8px;font-weight:700}.preview{display:flex;gap:10px;align-items:flex-start;padding:10px;border-radius:10px;cursor:pointer;margin:1px 0;transition:background .15s}.preview:hover{background:var(--hover)}.preview-title{font-size:.92rem;font-weight:650;line-height:1.4;margin-bottom:5px}.preview-sub{display:flex;align-items:center;gap:9px;font-size:.77rem;color:var(--muted)}.preview img{width:52px;height:46px;object-fit:cover;border-radius:8px;background:var(--hover)}.unread-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:6px}.popup-footer{width:100%;border-top:1px solid var(--edge);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;font-weight:750;background:linear-gradient(115deg,var(--accentFade),transparent 80%);color:var(--accent)}.popup-footer:hover{background:var(--accentFade)}.popup-status{padding:7px 17px;border-bottom:1px solid var(--edge);font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* reader */.reader #app{height:100vh;display:flex;min-height:0}.sidebar{width:var(--sidebar-width,242px);flex:0 0 var(--sidebar-width,242px);background:var(--panel);border-right:1px solid var(--edge);height:100vh;display:flex;flex-direction:column}.side-top{height:71px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid var(--edge)}.side-list{overflow:auto;flex:1;padding:18px 9px}.side-section{padding:14px 11px 9px;display:flex;align-items:center;justify-content:space-between}.nav-item{display:flex;align-items:center;gap:11px;border-radius:9px;padding:9px 11px;width:100%;text-align:left;color:var(--muted);min-width:0}.nav-item:hover{background:var(--hover);color:var(--text)}.nav-item.active{background:var(--accentFade);color:var(--accent);font-weight:800}.nav-name{min-width:0;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;flex:1}.nav-folder{font-weight:690}.nav-sub{font-size:.94em}.side-bottom{padding:12px;border-top:1px solid var(--edge);display:flex;gap:8px}.side-bottom .btn{flex:1}.sidebar-resizer{position:absolute;left:calc(var(--sidebar-width,242px) - 2px);width:5px;top:0;bottom:0;cursor:col-resize;z-index:5}.main{flex:1;min-width:0;display:flex;flex-direction:column;max-height:100vh}.topbar{height:71px;flex-shrink:0;background:var(--panel);border-bottom:1px solid var(--edge);padding:0 25px;display:flex;align-items:center;gap:14px}.title-block{min-width:160px;flex:1}.title-block h1{font-size:1.23rem;letter-spacing:-.035em;margin:0 0 2px}.top-controls{display:flex;align-items:center;gap:7px}.segmented{display:flex;align-items:center;border:1px solid var(--edge);padding:3px;background:var(--panel2);border-radius:10px;gap:2px}.segmented button{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:7px;color:var(--muted);font-size:12px}.segmented button.selected{background:var(--panel);box-shadow:0 1px 5px #00000016;color:var(--text)}.searchbox{display:flex;align-items:center;gap:9px;background:var(--panel2);border:1px solid var(--edge);border-radius:10px;padding:0 10px;width:190px;color:var(--muted)}.searchbox input{border:0;outline:none;background:transparent;min-width:0;width:100%;height:33px;color:var(--text)}.reader-scroller{overflow:auto;flex:1}.reader-inner{max-width:var(--reader-width,1040px);margin:0 auto;padding:25px 30px 80px}.reader-meta{display:flex;align-items:center;gap:12px;justify-content:space-between;margin-bottom:19px;flex-wrap:wrap}.reader-meta p{margin:0;color:var(--muted);font-size:.88rem}.post-list{display:flex;flex-direction:column;gap:var(--gap)}.post-card{background:var(--panel);border:1px solid var(--edge);border-radius:var(--radius);padding:var(--pad);box-shadow:var(--shadow);overflow:hidden;transition:border-color .12s,transform .12s}.post-card:hover{border-color:color-mix(in srgb,var(--accent) 30%,var(--edge))}.post-card.is-read{opacity:.64}.post-card.is-read:hover{opacity:1}.post-meta{display:flex;gap:9px;align-items:center;flex-wrap:wrap;font-size:.79rem;color:var(--muted);margin-bottom:9px}.sub-label{color:var(--accent);font-weight:760}.post-title{font-size:var(--titleSize);line-height:1.35;font-weight:750;letter-spacing:-.012em;cursor:pointer;overflow-wrap:anywhere}.post-title:hover{color:var(--accent)}.post-excerpt{color:var(--muted);font-size:.91rem;line-height:1.55;white-space:pre-line;margin-top:9px;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.post-foot{margin-top:12px;display:flex;align-items:center;gap:13px;color:var(--muted);font-size:.81rem}.post-foot span{display:inline-flex;align-items:center;gap:4px}.post-actions{margin-left:auto;display:flex;gap:3px}.post-actions .icon-btn{width:29px;height:29px}.post-thumbnail{height:140px;width:194px;object-fit:cover;border-radius:10px;background:var(--hover);cursor:pointer}.magazine .post-main{display:flex;align-items:flex-start;gap:17px}.magazine .post-body{flex:1;min-width:0}.magazine .post-thumbnail{flex-shrink:0}.list .post-card{box-shadow:none}.list .post-card{padding:10px 14px}.list .post-main{display:flex;align-items:center;gap:12px}.list .post-body{flex:1;min-width:0}.list .post-thumbnail{width:54px;height:48px;order:-1;border-radius:7px}.list .post-title{font-size:.97rem;font-weight:650}.list .post-meta{margin:0 0 4px}.list .post-excerpt{white-space:nowrap;display:block;overflow:hidden;text-overflow:ellipsis;margin:4px 0}.list .post-foot{margin:5px 0 0}.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));align-items:stretch}.cards .post-card{padding:0;display:flex;flex-direction:column}.cards .post-main{display:flex;flex-direction:column;flex:1}.cards .post-thumbnail{height:165px;width:100%;border-radius:0;order:-1}.cards .post-body{padding:var(--pad);flex:1}.cards .post-foot{padding:0 var(--pad) 8px;margin-top:0}.cards .post-title{font-size:1rem}.cards .post-excerpt{font-size:.87rem}.post-media-expand{margin-top:12px}.post-media-expand img{width:100%;max-height:500px;object-fit:contain;background:var(--panel2);border-radius:10px}.post-media-expand video{width:100%;max-height:550px;border-radius:10px;background:#000}.loadmore{margin:25px auto 0;display:flex}.modal-backdrop{position:fixed;inset:0;background:#05061288;z-index:50;display:grid;place-items:center;padding:22px}.modal{width:min(530px,100%);max-height:90vh;overflow:auto;background:var(--panel);border:1px solid var(--edge);border-radius:17px;padding:24px;box-shadow:0 25px 80px #0004}.modal h2{margin:0 0 7px}.modal p{color:var(--muted);line-height:1.5}.modal-controls{display:flex;justify-content:flex-end;gap:9px;margin-top:18px}.help{font-size:.84rem;line-height:1.5;color:var(--muted)}
+/* settings */.options{min-height:100vh}.options-shell{max-width:1100px;margin:auto;padding:35px 30px 80px}.options-header{display:flex;align-items:center;gap:16px;margin-bottom:30px}.options-header h1{margin:0;font-size:1.6rem}.options-grid{display:grid;grid-template-columns:205px minmax(0,1fr);gap:26px}.settings-nav{position:sticky;top:20px;height:max-content;display:flex;flex-direction:column;gap:5px}.settings-nav button{display:flex;align-items:center;gap:10px;padding:12px;border-radius:10px;text-align:left;font-weight:700;color:var(--muted)}.settings-nav button.active{background:var(--accentFade);color:var(--accent)}.settings-panel{background:var(--panel);border:1px solid var(--edge);border-radius:17px;padding:26px;box-shadow:var(--shadow)}.settings-panel h2{font-size:1.38rem;letter-spacing:-.025em;margin:0 0 7px}.settings-panel > p{color:var(--muted);margin:0 0 25px}.group-title{margin:25px 0 12px;font-size:.97rem}.setting-row{padding:14px 0;display:flex;gap:16px;align-items:center;border-bottom:1px solid var(--edge)}.setting-row div{flex:1}.setting-row strong{display:block;margin-bottom:3px}.setting-row small{color:var(--muted)}.setting-row input[type=checkbox]{accent-color:var(--accent);width:17px;height:17px}.setting-row select,.setting-row input:not([type=checkbox]){max-width:240px;width:100%;border:1px solid var(--edge);border-radius:9px;background:var(--panel2);padding:9px}.provider-note{background:var(--panel2);border:1px solid var(--edge);border-radius:12px;padding:16px;line-height:1.5;margin:15px 0}.danger-zone{border:1px solid #d8687855;background:#d8687809;padding:16px;border-radius:12px;margin-top:25px}
+@media(max-width:1000px){.topbar{padding:0 12px}.searchbox{width:130px}.top-controls .desktop-label{display:none}.sidebar{--sidebar-width:210px}.reader-inner{padding:18px}}@media(max-width:720px){.sidebar{--sidebar-width:62px}.side-top .brand span:not(.brand-mark),.side-bottom,.side-list .nav-name,.side-list .count,.side-list .eyebrow,.side-list .nav-folder,.side-list .nav-sub,.side-top .icon-btn{display:none}.nav-item{justify-content:center}.side-section{display:none}.topbar{gap:7px}.title-block{min-width:90px}.title-block h1{font-size:1rem}.top-controls .segmented{display:none}.searchbox{width:100px}.magazine .post-thumbnail{width:95px;height:90px}.options-grid{grid-template-columns:1fr}.settings-nav{position:static;flex-direction:row;overflow-x:auto}.settings-nav button{white-space:nowrap}.settings-panel{padding:16px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* v0.9.4 — visual feed identity and editorial magazine layout */
+.nav-glyph{position:relative;width:19px;height:19px;flex:0 0 19px;display:inline-flex;align-items:center;justify-content:center;overflow:hidden}
+.nav-folder .nav-glyph svg{fill:#f7bf43;stroke:#b57c16;stroke-width:1.35;filter:drop-shadow(0 1px 0 #9e730a28)}
+.nav-folder.active .nav-glyph svg{fill:#ffce5e;stroke:#b57c16}
+.subreddit-favicon{width:19px;height:19px;border-radius:50%;object-fit:cover;display:block;background:var(--panel2);border:1px solid var(--edge)}
+.subreddit-favicon[hidden]{display:none}
+.subreddit-icon-fallback{width:19px;height:19px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--accentFade);color:var(--accent)}
+.hidden-icon-fallback{display:none}
+.segmented .layout-label{font-size:11px;font-weight:650}
+.shortcut-hint{font-family:inherit;font-size:10px;color:var(--muted);border:1px solid var(--edge);background:var(--panel2);border-radius:4px;padding:2px 4px;margin-left:4px}
+.magazine{gap:15px}
+.magazine .post-card{padding:19px 21px;border-radius:15px}
+.magazine .post-main{display:flex;align-items:flex-start;gap:22px}
+.magazine .post-main .post-thumbnail{width:245px;height:165px;order:-1;flex:0 0 245px;border-radius:12px;object-fit:cover}
+.magazine .post-title{font-size:clamp(1.13rem,1.45vw,1.34rem);line-height:1.35;font-weight:775}
+.magazine .post-meta{margin-bottom:10px}
+.magazine .post-excerpt{font-size:.96rem;line-height:1.62;-webkit-line-clamp:4;margin-top:12px}
+.magazine .post-foot{margin-top:18px;padding-top:10px;border-top:1px solid var(--edge)}
+@media(max-width:1180px){.segmented .layout-label{display:none}}
+@media(max-width:850px){.magazine .post-main .post-thumbnail{width:145px;height:110px;flex-basis:145px}.magazine .post-card{padding:var(--pad)}.shortcut-hint{display:none}}
+@media(max-width:560px){.magazine .post-main{flex-direction:column;gap:11px}.magazine .post-main .post-thumbnail{order:-1;width:100%;height:190px;flex-basis:auto}}
+
+/* Middle-click applies to the complete post surface, including text, images and actions. */
+.reader .post-card{cursor:pointer}
+.reader .post-card button,.reader .post-card video{cursor:auto}
+
+/* v0.9.6 Reddit Reader identity */
+.brand-mark{background:transparent;box-shadow:none;border-radius:0;overflow:visible}
+.brand-mark img{display:block;object-fit:contain;max-width:100%;max-height:100%;image-rendering:auto}
+button:disabled{opacity:.48;cursor:not-allowed}
+
+/* All interface typography families: system-local, offline and privacy-preserving. */
+body[data-font=system]{font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+body[data-font=segoe]{font-family:"Segoe UI",system-ui,sans-serif}
+body[data-font=aptos]{font-family:Aptos,Calibri,"Segoe UI",sans-serif}
+body[data-font=calibri]{font-family:Calibri,"Segoe UI",sans-serif}
+body[data-font=candara]{font-family:Candara,Calibri,"Segoe UI",sans-serif}
+body[data-font=corbel]{font-family:Corbel,Calibri,"Segoe UI",sans-serif}
+body[data-font=arial]{font-family:Arial,Helvetica,sans-serif}
+body[data-font=helvetica]{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
+body[data-font=verdana]{font-family:Verdana,Geneva,sans-serif}
+body[data-font=tahoma]{font-family:Tahoma,"Segoe UI",sans-serif}
+body[data-font=trebuchet]{font-family:"Trebuchet MS",Verdana,sans-serif}
+body[data-font=roboto]{font-family:Roboto,"Segoe UI",Arial,sans-serif}
+body[data-font=inter]{font-family:Inter,"Segoe UI",system-ui,sans-serif}
+body[data-font=opensans]{font-family:"Open Sans","Segoe UI",sans-serif}
+body[data-font=notosans]{font-family:"Noto Sans",Arial,sans-serif}
+body[data-font=sourcesans]{font-family:"Source Sans 3","Source Sans Pro",Arial,sans-serif}
+body[data-font=lato]{font-family:Lato,"Segoe UI",Arial,sans-serif}
+body[data-font=montserrat]{font-family:Montserrat,"Segoe UI",Arial,sans-serif}
+body[data-font=poppins]{font-family:Poppins,"Segoe UI",Arial,sans-serif}
+body[data-font=nunito]{font-family:"Nunito Sans",Arial,sans-serif}
+body[data-font=georgia]{font-family:Georgia,Cambria,serif}
+body[data-font=cambria]{font-family:Cambria,Georgia,serif}
+body[data-font=palatino]{font-family:"Palatino Linotype",Palatino,"Book Antiqua",serif}
+body[data-font=garamond]{font-family:Garamond,"EB Garamond",Georgia,serif}
+body[data-font=baskerville]{font-family:Baskerville,"Libre Baskerville",Georgia,serif}
+body[data-font=times]{font-family:"Times New Roman",Times,serif}
+body[data-font=serif]{font-family:Georgia,serif}
+body[data-font=mono]{font-family:Consolas,"Cascadia Code",monospace}
+body[data-font=consolas]{font-family:Consolas,"Cascadia Code",monospace}
+body[data-font=cascadia]{font-family:"Cascadia Code",Consolas,monospace}
+body[data-font=courier]{font-family:"Courier New",Courier,monospace}
+/* Exactly three visible text lines in every non-list layout; keep user excerpt preference. */
+.post-list:not(.list) .post-excerpt{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden;white-space:pre-line;line-height:1.55}
+.post-list.list .post-excerpt{display:none!important}
+.magazine .post-excerpt{line-height:1.55;-webkit-line-clamp:3;line-clamp:3}
+
+/* Dense popup with compact section headings and a small yellow folder visual. */
+.popup{width:408px;height:520px;min-height:520px}
+.popup-head{padding:9px 12px 7px;gap:6px}
+.popup-head .brand{gap:5px;font-size:.99rem;cursor:pointer}
+.popup-head .brand-mark{width:23px;height:23px}
+.popup-head .brand-mark img{width:23px;height:23px}
+.popup-head .icon-btn{height:28px;width:28px}
+.popup-subhead{padding:6px 11px;gap:5px}
+.popup .btn.small{padding:5px 8px;font-size:11px}
+.popup .popup-markall{margin-inline-start:auto;flex:0 0 auto;background:var(--accentFade);border-color:color-mix(in srgb,var(--accent) 22%,var(--edge));color:var(--accent)}
+.popup .popup-markall:hover{filter:brightness(1.07)}
+.popup .popup-markall:disabled{background:transparent;color:var(--muted)}
+.popup-status{padding:4px 12px;font-size:10px}
+.popup-group{padding:7px 7px 0}
+.popup-group-head{padding:6px 9px;gap:7px;border-radius:7px;background:#fff1bd;color:#765300;border:1px solid #eed47c;font-size:11.5px}
+.popup-group-head svg{fill:#efb529;stroke:#ac750b;stroke-width:1.4}
+.popup-group-title{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.popup-group-head .count{background:#e6bd51;color:#624500;padding:1px 5px;font-size:10px}
+body[data-theme=dark] .popup-group-head,body[data-theme=oled] .popup-group-head,body[data-theme=slate] .popup-group-head{background:#433419;border-color:#6d5321;color:#ffdf83}
+body[data-theme=dark] .popup-group-head .count,body[data-theme=oled] .popup-group-head .count,body[data-theme=slate] .popup-group-head .count{background:#73561f;color:#ffecb0}
+.popup .preview{padding:6px 7px;gap:7px;border-radius:7px;margin:0}
+.popup .preview-title{font-size:.86rem;line-height:1.28;margin-bottom:2px}
+.popup .preview-sub{font-size:.72rem;gap:8px}
+.popup .preview img{width:42px;height:37px;border-radius:6px}
+.popup .unread-dot{width:5px;height:5px;margin-top:5px}
+.popup-footer{padding:9px 12px;font-size:.91rem}
+
+/* v0.9.9: Native-feeling feed menu and consistent background post opening. */
+.feed-context-menu{position:fixed;z-index:80;min-width:224px;max-width:min(310px,calc(100vw - 16px));padding:5px;background:var(--panel);border:1px solid var(--edge);border-radius:12px;box-shadow:0 14px 45px #00000029,0 3px 12px #00000012;color:var(--text);animation:feed-menu-in .12s ease-out;}
+.feed-menu-heading{display:flex;gap:9px;align-items:center;min-width:0;padding:9px 11px 10px;color:var(--muted);font-size:11px;font-weight:750;border-bottom:1px solid var(--edge);margin-bottom:4px;}
+.feed-menu-heading span{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.feed-context-menu [role="menuitem"]{display:flex;align-items:center;gap:10px;width:100%;padding:9px 11px;font-size:12px;font-weight:600;color:var(--text);text-align:left;border-radius:7px;}
+.feed-context-menu [role="menuitem"] svg{color:var(--muted);}
+.feed-context-menu [role="menuitem"]:hover,.feed-context-menu [role="menuitem"]:focus-visible{background:var(--accentFade);color:var(--accent);outline:0;}
+.feed-context-menu [role="menuitem"]:hover svg,.feed-context-menu [role="menuitem"]:focus-visible svg{color:var(--accent);}
+.feed-menu-divider{height:1px;background:var(--edge);margin:4px 6px;}
+.feed-menu-hint{margin-left:auto;font-size:10px;font-weight:500;color:var(--muted);}
+@keyframes feed-menu-in{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.feed-context-menu{animation:none}}
+.reader .post-card:focus-within{border-color:color-mix(in srgb,var(--accent) 35%,var(--edge))}
+
+/* Theme-aware neutral sidebar. All colours derive from the selected theme. */
+.sidebar{background:var(--panel);color:var(--text)}
+.sidebar .side-top,.sidebar .side-list{color:var(--text)}
+.sidebar .nav-item,.sidebar .nav-item .nav-name{color:var(--text)}
+.sidebar .nav-item:hover{background:var(--hover);color:var(--text)}
+.sidebar .nav-item.active{background:color-mix(in srgb,var(--accent) 16%,var(--panel));color:var(--text);font-weight:750}
+.sidebar .nav-item .count,.sidebar .nav-item .count.positive{background:var(--panel2);color:var(--text);border:1px solid var(--edge)}
+.sidebar .nav-item.active .count{background:color-mix(in srgb,var(--accent) 10%,var(--panel2))}
+.sidebar .subreddit-icon-fallback{background:color-mix(in srgb,var(--accent) 12%,var(--panel));border:1px solid var(--edge);border-radius:50%}
+.sidebar .nav-item.is-dragging{opacity:.38}
+.sidebar .nav-item.drop-before{box-shadow:inset 0 3px 0 var(--accent);background:var(--accentFade)}
+.sidebar .nav-item.drop-after{box-shadow:inset 0 -3px 0 var(--accent);background:var(--accentFade)}
+.sidebar .nav-item.drop-inside{background:var(--accentFade);outline:2px dashed var(--accent);outline-offset:-3px}
+.sidebar-root-dropzone{display:none;align-items:center;justify-content:center;margin:10px 7px;padding:11px;border:1px dashed var(--accent);border-radius:9px;color:var(--text);font-size:11px;font-weight:700}
+.sidebar-reordering .sidebar-root-dropzone{display:flex}
+.sidebar-root-dropzone.drop-root{background:var(--accentFade);border-color:var(--accent);color:var(--text)}
+/* Popup groups are buttons so click, Space and Enter collapse individual sections */
+.popup-group-head{display:flex;width:100%;text-align:left;cursor:pointer}
+.popup-group-head:hover{filter:brightness(.975)}
+.popup-group-head:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.popup-collapse-chevron{display:inline-flex;align-items:center;justify-content:center;transition:transform .14s ease;transform:rotate(90deg)}
+.popup-group-collapsed .popup-collapse-chevron{transform:rotate(0deg)}
+.popup-group-collapsed{padding-bottom:0}
+.popup-group-body{min-width:0}
+.sidebar-reordering .sidebar-root-dropzone{position:sticky;top:0;z-index:3;box-shadow:0 3px 9px #121a2d20}
+
+/* v1.0.1 — denser sidebar, unread-only emphasis, reliable community artwork */
+.sidebar .side-list{padding:9px 6px 14px}
+.sidebar .side-section{padding:10px 8px 5px}
+.sidebar .side-list > .eyebrow{padding-bottom:6px!important}
+.sidebar .nav-item{gap:7px;padding:5px 7px;border-radius:7px;font-size:12px;line-height:1.25;min-height:27px;font-weight:450!important}
+.sidebar .nav-item .nav-name{font-size:12px;font-weight:450;letter-spacing:-.008em}
+.sidebar .nav-item.has-unread .nav-name{font-weight:750}
+.sidebar .nav-folder .nav-name{font-weight:450}
+.sidebar .nav-folder.has-unread .nav-name{font-weight:750}
+.sidebar .nav-item .count{padding:1px 5px;font-size:10.5px;line-height:1.3;font-weight:650;border-radius:7px;color:var(--text);background:var(--panel2);border-color:var(--edge)}
+.sidebar .nav-glyph{width:17px;height:17px;flex-basis:17px}
+.sidebar .subreddit-favicon,.sidebar .subreddit-icon-fallback{width:17px;height:17px;flex:0 0 17px}
+.sidebar .subreddit-icon-fallback img{width:15px;height:15px}
+.sidebar .nav-folder .nav-glyph svg{width:16px;height:16px}
+body[data-density=ultra] .sidebar .nav-item{padding-top:3px;padding-bottom:3px;min-height:22px}
+body[data-density=compact] .sidebar .nav-item{padding-top:4px;padding-bottom:4px;min-height:24px}
+body[data-density=spacious] .sidebar .nav-item{padding-top:7px;padding-bottom:7px;min-height:32px}
+.post-meta .sub-label,.post-dialog-community{display:inline-flex;gap:6px;align-items:center;min-width:0}
+.post-community{width:17px;height:17px;flex:0 0 17px}
+.post-community .subreddit-favicon,.post-community .subreddit-icon-fallback{width:17px;height:17px}
+.post-community .subreddit-icon-fallback img{width:14px;height:14px}
+/* Three-line previews for Magazine and Cards. */
+
+.list .post-excerpt{display:none!important}
+.post-card{cursor:pointer}
+.post-card button,.post-card a,.post-card video{cursor:auto}
+.post-dialog-open{overflow:hidden}
+.post-dialog-backdrop{position:fixed;inset:0;z-index:100;background:#070b1ca8;backdrop-filter:blur(7px);display:flex;align-items:center;justify-content:center;padding:22px;animation:post-dialog-fade .14s ease-out}
+.post-dialog{outline:0;display:flex;flex-direction:column;width:min(820px,96vw);max-height:min(88vh,1000px);min-height:220px;background:var(--panel);border:1px solid var(--edge);border-radius:19px;box-shadow:0 28px 110px #0008;overflow:hidden}
+.post-dialog-top{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--edge);padding:12px 20px;min-height:54px}
+.post-dialog-top .post-dialog-community{font-size:12px;color:var(--muted)}
+.post-dialog-top .post-dialog-community b{color:var(--text)}
+.post-dialog-scroll{flex:1;overflow:auto;min-height:0;padding:22px 26px}
+.post-dialog-scroll h2{font-size:clamp(20px,2vw,28px);letter-spacing:-.024em;line-height:1.32;margin:0 0 10px;overflow-wrap:anywhere}
+.post-dialog-sub{font-size:12px;color:var(--muted);margin-bottom:18px}
+.post-dialog-gallery{display:flex;flex-direction:column;gap:9px;margin-bottom:19px;background:var(--panel2);border-radius:12px;overflow:hidden}
+.post-dialog-gallery img{max-height:470px;width:100%;object-fit:contain}
+.post-dialog-gallery video{width:100%;max-height:460px;background:black}
+.post-dialog-text{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.68;font-size:14px;min-height:40px}
+.post-dialog-hint{font-size:11px;color:var(--muted);margin-top:18px}
+.post-dialog-actions{display:flex;justify-content:flex-end;gap:9px;border-top:1px solid var(--edge);padding:12px 20px;background:var(--panel2)}
+@keyframes post-dialog-fade{from{opacity:0}to{opacity:1}}
+/* Popup uses the same folder/feed tree as the full reader. */
+.popup-folder-children{margin:2px 0 3px 10px;padding-left:7px;border-left:1px solid color-mix(in srgb,var(--edge) 86%,var(--accent) 14%)}
+.popup-group{padding:4px 7px 0}
+.popup-folder .popup-group-head{background:#ffecb3}
+.popup-group-head{padding:5px 7px;min-height:29px;gap:5px}
+.popup-group-head .popup-community-image{margin-left:0}
+.popup-community-image{width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;flex:0 0 15px}
+.popup-community-image .subreddit-favicon,.popup-community-fallback{width:14px;height:14px;object-fit:cover;border-radius:50%;border:0}
+.popup-community-image .subreddit-favicon[hidden],.popup-community-image .popup-community-fallback.hidden-icon-fallback{display:none}
+.popup-more{padding:5px 13px;font-size:10px;color:var(--muted)}
+.popup .preview-sub{gap:5px;flex-wrap:wrap}
+.popup .preview-sub .popup-community-image{width:12px;height:12px;flex-basis:12px}
+.popup .preview-sub .subreddit-favicon,.popup .preview-sub .popup-community-fallback{width:12px;height:12px}
+@media(max-width:640px){.post-dialog-backdrop{padding:8px}.post-dialog{max-height:94vh;border-radius:13px}.post-dialog-scroll{padding:15px}.post-dialog-top,.post-dialog-actions{padding:9px 13px}}
+@media(prefers-reduced-motion:reduce){.post-dialog-backdrop{animation:none}}
+
+/* v1.0.2 — collapsible sidebar folders and slightly larger label typography */
+.sidebar .nav-item{font-size:12.8px}
+.sidebar .nav-item .nav-name{font-size:12.8px}
+.folder-header{display:flex;position:relative;align-items:center;min-width:0}
+.folder-header .nav-item{flex:1;min-width:0;padding-right:27px}
+.folder-header .folder-toggle{position:absolute;right:5px;top:50%;transform:translateY(-50%);width:23px;height:23px;display:grid;place-items:center;border-radius:6px;cursor:pointer;color:#3a4351}
+.folder-header .folder-toggle:hover{background:#e1e8f5}
+.folder-header .folder-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:0}
+.folder-header .folder-toggle svg{transform:rotate(90deg);transition:transform .16s ease}
+.folder-collapsed > .folder-header .folder-toggle svg{transform:rotate(0deg)}
+.folder-children{min-width:0}
+.side-bottom{justify-content:center}
+.side-bottom .btn.primary{flex:0 1 auto;min-width:120px;justify-content:center}
+.popup-no-unread{padding:32px 18px;color:var(--muted);text-align:center;font-size:12px;line-height:1.5}
+/* Determinate progress, never displayed outside an active worker refresh. */
+.refresh-progress{position:fixed;left:0;right:0;bottom:0;z-index:70;pointer-events:none}
+.refresh-progress[hidden]{display:none!important}
+.refresh-progress-label{font-size:10px;line-height:1.3;font-weight:700;color:var(--accent);background:var(--panel);max-width:max-content;margin:0 8px 3px auto;padding:3px 8px;border-radius:7px;box-shadow:0 2px 8px #0002}
+.refresh-progress-track{width:100%;height:4px;background:var(--accentFade);overflow:hidden}
+.refresh-progress-fill{height:100%;width:0;background:var(--accent);transition:width .18s ease}
+.popup-refresh .refresh-progress-label{font-size:9px;margin-bottom:2px;max-width:95%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.popup-refresh .refresh-progress-track{height:3px}
+@media(prefers-reduced-motion:reduce){.folder-header .folder-toggle svg,.refresh-progress-fill{transition:none}}
+
+/* v1.0.3 — readable, larger subreddit artwork across every feed surface */
+.sidebar .nav-glyph,.sidebar .subreddit-favicon,.sidebar .subreddit-icon-fallback{width:22px;height:22px;flex-basis:22px}
+.sidebar .subreddit-icon-fallback img{width:19px;height:19px}
+.post-community,.post-community .subreddit-favicon,.post-community .subreddit-icon-fallback{width:21px;height:21px;flex-basis:21px}
+.post-community .subreddit-icon-fallback img{width:19px;height:19px}
+.popup-community-image,.popup-community-image .subreddit-favicon,.popup-community-image .popup-community-fallback{width:18px;height:18px;flex-basis:18px}
+.popup .preview-sub .popup-community-image,.popup .preview-sub .subreddit-favicon,.popup .preview-sub .popup-community-fallback{width:15px;height:15px;flex-basis:15px}
+
+/* Keep both bottom navigation buttons in the same row; no duplicate top settings icons. */
+.side-bottom{justify-content:center;align-items:center;gap:8px;padding:10px}
+.side-bottom .btn,.side-bottom .btn.primary{flex:1 1 0;min-width:0;padding:8px 7px;white-space:nowrap;font-size:12px}
+
+/* The popup's bottom progress track is the sole visible updating indicator. */
+.popup .refresh-progress{z-index:80}
+.popup .refresh-progress-track{height:4px}
+
+
+/* Imagus-like hover enlargements for reader thumbnails and inline post media. */
+[data-media-zoom]{cursor:zoom-in}
+.media-hover-panel{
+ position:fixed;
+ z-index:150;
+ display:flex;
+ flex-direction:column;
+ align-items:stretch;
+ overflow:hidden;
+ padding:10px;
+ border-radius:16px;
+ border:1px solid color-mix(in srgb,var(--edge) 80%,var(--accent) 20%);
+ background:var(--panel);
+ color:var(--text);
+ box-shadow:0 18px 70px #0009,0 4px 16px #0004;
+ animation:media-hover-enter .13s ease-out;
+}
+.media-hover-stage{
+ position:relative;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ overflow:hidden;
+ min-height:100px;
+ max-height:calc(min(79vh,690px) - 20px);
+ border-radius:11px;
+ background:color-mix(in srgb,var(--panel2) 75%,#090b11 25%);
+}
+.media-hover-content{
+ display:block;
+ width:auto;
+ height:auto;
+ max-width:100%;
+ max-height:calc(min(79vh,690px) - 20px);
+ object-fit:contain;
+ border-radius:6px;
+}
+.media-hover-panel video.media-hover-content{width:100%;background:#090b11;cursor:default}
+.media-hover-error{padding:32px;text-align:center;color:var(--muted);font-size:13px;line-height:1.55}
+.media-hover-tools{
+ position:absolute;
+ top:17px;
+ right:17px;
+ z-index:1;
+ display:flex;
+ gap:6px;
+ opacity:0;
+ pointer-events:none;
+ transform:translateY(-4px);
+ transition:opacity .15s ease,transform .15s ease;
+}
+.media-hover-panel:hover .media-hover-tools,.media-hover-panel:focus-within .media-hover-tools{
+ opacity:1;
+ pointer-events:auto;
+ transform:translateY(0);
+}
+.media-hover-tool{
+ padding:8px 11px;
+ border-radius:9px;
+ border:1px solid #ffffff35;
+ background:#11131ce8;
+ box-shadow:0 2px 10px #0005;
+ color:white;
+ font-size:12px;
+ font-weight:700;
+ backdrop-filter:blur(8px);
+}
+.media-hover-tool:hover,.media-hover-tool:focus-visible{background:var(--accent);color:#fff}
+@keyframes media-hover-enter{from{opacity:0;transform:translateY(3px) scale(.988)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.media-hover-panel{animation:none}.media-hover-tools{transition:none}}
+@media (max-width:680px){.media-hover-panel{padding:6px;border-radius:10px}.media-hover-tools{right:10px;top:10px;opacity:1;transform:none;pointer-events:auto}}
+
+/* v1.0.5 — feed management + slightly more legible metadata in cards. */
+.feed-context-menu .feed-menu-delete{color:#c43244;}
+.feed-context-menu .feed-menu-delete svg{color:currentColor;}
+.feed-context-menu .feed-menu-delete:hover,.feed-context-menu .feed-menu-delete:focus-visible{background:#ffe7e9;color:#ae2637;}
+.reader .post-meta .sub-label{font-size:.88rem;line-height:1.25;}
+.reader .post-foot > span{font-size:.90rem;line-height:1.25;}
+
+/* v1.0.6 — right-click the hover preview to pin it centrally, then scroll to zoom. */
+.media-hover-panel.media-hover-centered{
+ left:50% !important;
+ top:50% !important;
+ transform:translate(-50%,-50%) !important;
+ animation:none;
+}
+.media-hover-panel{touch-action:pan-x pan-y;}
+.media-hover-panel.media-hover-centered .media-hover-stage{max-width:100%;}
+
+/* v1.0.7: real continuous links list; Magazine and Cards are unaffected. */
+.reader .post-list.list{gap:0;background:var(--panel);border:1px solid var(--edge);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.reader .post-list.list .post-card{background:transparent;box-shadow:none;border:0;border-bottom:1px solid var(--edge);border-radius:0;padding:12px 16px;margin:0;transition:background .12s;overflow:visible}
+.reader .post-list.list .post-card:last-child{border-bottom:0}
+.reader .post-list.list .post-card:hover{background:var(--hover)}
+.reader .post-list.list .post-title{font-size:1.075rem;font-weight:680;text-align:left;line-height:1.42}
+.reader .post-list.list .post-excerpt{display:none!important}
+.reader .post-list.list .post-thumbnail{width:68px;height:60px;flex:0 0 68px;object-fit:cover}
+/* Both the image/video and its surround scale with the zoomed size. */
+.media-hover-panel{box-sizing:border-box}
+.media-hover-stage{width:100%;height:100%;min-height:0;flex:1 1 auto;overflow:hidden}
+.media-hover-panel .media-hover-content{width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain}
+.media-hover-panel.media-hover-centered .media-hover-stage{max-height:none}
+
+/* Google Drive inline sign-in + linked setup guide */
+.drive-help-modal{width:min(780px,100%);max-height:min(92vh,950px)}
+.drive-help-modal h2{font-size:1.28rem;margin:0}
+.drive-help-ids{display:flex;flex-wrap:wrap;gap:12px;padding:14px;border:1px solid var(--edge);border-radius:12px;background:var(--panel2);margin:15px 0}
+.drive-help-ids label{flex:1 1 240px;min-width:0;font-size:.8rem;font-weight:700;display:flex;flex-direction:column;gap:6px;color:var(--muted)}
+.drive-help-ids input{width:100%;min-width:0;border:1px solid var(--edge);padding:9px;border-radius:8px;background:var(--panel);color:var(--text);font-size:.81rem}
+.drive-help-ids .btn{align-self:end}
+.drive-help-steps{padding-left:30px;display:grid;gap:12px;counter-reset:steps}
+.drive-help-steps li{padding:10px 12px 10px 3px;border-bottom:1px solid var(--edge)}
+.drive-help-steps li strong{font-size:.98rem;color:var(--text)}
+.drive-help-steps li p{margin:5px 0 7px;font-size:.88rem;line-height:1.5}
+.drive-help-link{display:inline-flex;align-items:center;gap:5px;color:var(--accent);font-weight:700;font-size:.86rem;text-decoration:underline;text-underline-offset:2px}
+.drive-help-link:hover{filter:brightness(1.2)}
+
+/* v1.0.9 — 6px surround on enlarged hover media; accented text notices. */
+.media-hover-panel{padding:6px;border-radius:11px}
+.media-hover-stage{border-radius:7px}
+.post-dialog-text.post-dialog-info{
+ background:color-mix(in srgb,var(--accent) 12%,var(--panel) 88%);
+ border:1px solid color-mix(in srgb,var(--accent) 25%,var(--edge) 75%);
+ color:var(--text);border-radius:10px;padding:12px 15px;min-height:0;
+}
+.post-dialog-embeds{display:flex;flex-direction:column;gap:14px;margin:0 0 20px}
+.post-dialog-embed{border:1px solid var(--edge);background:var(--panel2);border-radius:12px;overflow:hidden}
+.post-dialog-embed-head{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;gap:12px;font-size:.82rem}
+.post-dialog-embed-head a{color:var(--accent);font-weight:650;text-decoration:underline;text-underline-offset:2px}
+.post-dialog-embed iframe{display:block;width:100%;height:390px;border:0;background:#101116}
+.post-dialog-embed[data-provider="TikTok"] iframe,.post-dialog-embed[data-provider="Instagram"] iframe{height:590px}
+.post-dialog-embed[data-provider="Spotify"] iframe{height:300px}
+@media(max-width:640px){.post-dialog-embed iframe{height:265px}.post-dialog-embed[data-provider="TikTok"] iframe,.post-dialog-embed[data-provider="Instagram"] iframe{height:470px}}
+
+/* v1.0.10: always-visible Google OAuth redirect URI for Cloud setup. */
+.drive-redirect-card{border:1px solid var(--edge);border-radius:12px;background:var(--panel2);padding:14px;margin:14px 0;display:grid;gap:9px}
+.drive-redirect-card strong{font-size:.91rem;color:var(--text)}
+.drive-redirect-line{display:flex;gap:8px;align-items:center;min-width:0;flex-wrap:wrap}
+.drive-redirect-line input{flex:1 1 340px;min-width:0;max-width:100%;box-sizing:border-box;padding:10px 12px;border:1px solid var(--edge);border-radius:8px;background:var(--panel);color:var(--text);font-size:.84rem}
+.drive-redirect-line .btn{flex:0 0 auto;white-space:nowrap}
+.drive-redirect-card small{color:var(--muted);font-size:.79rem;line-height:1.45}
+
+/* v1.0.11 — Connected account and configured Reddit app identity cards */
+.connection-hero{display:flex;align-items:flex-start;gap:18px;min-width:0;padding:21px 22px;margin:0 0 22px;border:1px solid color-mix(in srgb,var(--accent) 26%,var(--edge));border-radius:18px;background:linear-gradient(115deg,color-mix(in srgb,var(--accent) 10%,var(--panel)),var(--panel) 78%);box-shadow:0 7px 24px #00000009}
+.connection-hero-content{flex:1;min-width:0}.connection-eyebrow{font-size:10px;font-weight:800;letter-spacing:.095em;display:flex;align-items:center;gap:7px;color:var(--muted);margin:0 0 8px}.connection-name{font-size:1.35rem;line-height:1.25;font-weight:790;overflow-wrap:anywhere;letter-spacing:-.025em}.connection-email{font-size:.96rem;margin-top:5px;overflow-wrap:anywhere;color:var(--text)}.connection-secondary{font-size:.88rem;color:var(--text);margin-top:7px}.connection-details{font-size:.81rem;color:var(--muted);line-height:1.5;margin-top:7px;overflow-wrap:anywhere}.connection-details code{overflow-wrap:anywhere}.connection-status{flex:none;margin-left:auto;display:inline-flex;align-items:center;gap:6px;border:1px solid #3a99624d;background:#2a9c5920;color:#218a50;border-radius:100px;padding:5px 9px;font-size:.74rem;font-weight:760;white-space:nowrap}.connection-status::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}.connection-status.needs-attention{color:#b66d12;background:#d8a33216;border-color:#d8a33244}.connection-avatar,.connection-service-icon{width:76px;height:76px;flex:0 0 76px;border-radius:50%;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}.connection-avatar{background:color-mix(in srgb,var(--accent) 14%,var(--panel));border:2px solid color-mix(in srgb,var(--accent) 24%,var(--edge))}.connection-avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.connection-avatar img[hidden]{display:none}.avatar-initial{font-size:32px;font-weight:800;color:var(--accent)}.google-g{font-weight:900;font-family:Arial,sans-serif;font-size:18px;letter-spacing:-.08em;background:conic-gradient(#4285f4 0deg 110deg,#34a853 110deg 210deg,#fbbc05 210deg 270deg,#ea4335 270deg 330deg,#4285f4 330deg);background-clip:text;-webkit-background-clip:text;color:transparent}.reddit-hero{border-color:color-mix(in srgb,#ff4500 30%,var(--edge));background:linear-gradient(115deg,color-mix(in srgb,#ff4500 8%,var(--panel)),var(--panel) 75%)}.reddit-service-icon{background:#ff4500;color:white;font-size:30px;font-weight:850;letter-spacing:-.09em;border-radius:20px}.reddit-hero .connection-name{color:var(--text)}
+@media(max-width:710px){.connection-hero{flex-wrap:wrap;gap:12px;padding:16px}.connection-avatar,.connection-service-icon{width:56px;height:56px;flex-basis:56px}.connection-name{font-size:1.13rem}.connection-status{margin-left:0}}
+
+/* v1.0.12 - persistent three-pane reader, scroll independently in both content panes. */
+.reader.three-pane-mode .reader-scroller{overflow:hidden;min-height:0}
+.reader.three-pane-mode .reader-inner{height:100%;max-width:none;display:flex;flex-direction:column;min-height:0;margin:0;padding:0}
+.reader.three-pane-mode .reader-meta{margin:0;flex-shrink:0;padding:9px 17px;border-bottom:1px solid var(--edge);background:var(--panel)}
+.three-pane-layout{display:grid;grid-template-columns:clamp(300px,36%,475px) minmax(0,1fr);flex:1;min-height:0;background:var(--panel)}
+.three-pane-list{min-height:0;overflow-y:auto;overscroll-behavior:contain;border-right:1px solid var(--edge);background:var(--panel2)}
+.three-post-row{display:block;width:100%;padding:14px 16px;text-align:left;border:0;border-bottom:1px solid var(--edge);border-radius:0;background:transparent;color:var(--text);cursor:pointer}
+.three-post-row:hover{background:var(--hover)}
+.three-post-row.selected{background:color-mix(in srgb,var(--accent) 10%,var(--panel));box-shadow:inset 3px 0 var(--accent)}
+.three-post-row.is-read:not(.selected) .three-post-title{color:var(--muted);font-weight:500}
+.three-post-head{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:11px;margin-bottom:7px;min-width:0}
+.three-post-head > span:not(.nav-glyph){white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
+.three-post-head time{margin-left:auto;white-space:nowrap}
+.three-community-icon{height:17px;width:17px;border-radius:50%;object-fit:cover}
+.three-community-glyph{width:17px;height:17px;flex:0 0 17px}
+.three-post-middle{display:flex;gap:10px;align-items:flex-start}
+.three-post-title{display:block;flex:1;min-width:0;font-size:13.5px;font-weight:720;line-height:1.39;overflow-wrap:anywhere}
+.three-unread-dot{display:inline-block;width:6px;height:6px;background:var(--accent);border-radius:50%;margin-right:7px;vertical-align:middle}
+.three-post-thumb{width:60px;height:54px;flex:0 0 60px;object-fit:cover;border-radius:7px;background:var(--panel)}
+.three-post-stats{display:flex;align-items:center;gap:13px;color:var(--muted);font-size:11px;margin-top:9px}
+.three-post-stats span{display:inline-flex;align-items:center;gap:3px}
+.three-pane-detail{overflow-y:auto;min-height:0;overscroll-behavior:contain;min-width:0;background:var(--panel)}
+.three-pane-detail-card{min-height:100%;display:flex;flex-direction:column}
+.three-pane-detail-head{display:flex;align-items:center;gap:7px;padding:14px 24px;color:var(--muted);font-size:12px;border-bottom:1px solid var(--edge)}
+.three-pane-detail-head strong{color:var(--text)}
+.three-pane-detail-content{padding:25px clamp(18px,3vw,48px);max-width:980px;width:100%;margin:0 auto;flex:1}
+.three-pane-detail-content h2{font-size:clamp(21px,2.2vw,30px);line-height:1.3;letter-spacing:-.025em;margin:0 0 10px;overflow-wrap:anywhere}
+.three-pane-detail-content .post-dialog-gallery{margin:0 0 20px}
+.three-pane-detail-content .post-dialog-gallery img{max-height:70vh}
+.three-pane-actions{position:sticky;bottom:0;display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;padding:12px 18px;background:var(--panel2);border-top:1px solid var(--edge);z-index:2}
+.three-pane-actions .btn{font-size:12px;padding:7px 10px}
+@media(max-width:900px){.three-pane-layout{grid-template-columns:minmax(230px,43%) minmax(0,1fr)}.three-pane-detail-content{padding:18px}.three-pane-actions{justify-content:flex-start}.three-pane-actions .btn{font-size:11px}}
+@media(max-width:640px){.three-pane-layout{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(170px,36%) minmax(0,1fr)}.three-pane-list{border-right:0;border-bottom:1px solid var(--edge)}.three-post-row{padding:9px 12px}}
+
+/* v1.0.13 — action-popup reader shortcut, compact PT-PT action, and invisible animated sorting */
+.popup-brand-link{cursor:pointer;border-radius:8px;min-width:0}
+.popup-brand-link:hover{opacity:.85}
+.popup-brand-link:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.side-bottom .btn.sidebar-add-feed{display:flex;align-items:center;justify-content:center;text-align:center;gap:0;padding-inline:5px;font-size:12px}
+.sidebar-tree{min-height:46px;position:relative}
+.sidebar-node{position:relative;will-change:auto}
+.sidebar .sidebar-node .nav-item{margin:0}
+.sidebar .sidebar-node.is-dragging{opacity:.42}
+.sidebar .sidebar-node.is-dragging .nav-item{cursor:grabbing}
+.sidebar .sidebar-node:not(.is-dragging) .nav-item[draggable=true]{cursor:grab}
+.sidebar-reordering .sidebar-node{will-change:transform}
+/* No dashed root targets, before/after lines, or destination highlight while sorting. */
+.sidebar .nav-item.drop-before,.sidebar .nav-item.drop-after,.sidebar .nav-item.drop-inside{box-shadow:none;outline:none;background:inherit}
+.sidebar-root-dropzone,.sidebar-reordering .sidebar-root-dropzone{display:none!important}
+@media(prefers-reduced-motion:reduce){.sidebar-node{transition:none!important;animation:none!important}}
+/* More restrained zoom chrome, with image remaining fully scaled inside it. */
+.media-hover-panel{padding:4px;border-radius:9px;box-shadow:0 10px 28px rgba(0,0,0,.19),0 2px 7px rgba(0,0,0,.10)}
+.media-hover-stage{border-radius:6px}
+@media(max-width:680px){.media-hover-panel{padding:4px;border-radius:9px}}
+
+/* v1.0.14: adjustable compact middle pane and visible keyboard selection. */
+body.three-pane-mode .three-pane-layout{
+ grid-template-columns:clamp(230px,var(--three-list-width,390px),calc(100% - 312px)) 7px minmax(0,1fr);
+}
+.three-pane-resizer{position:relative;cursor:col-resize;background:var(--edge);border-left:1px solid var(--edge);border-right:1px solid var(--edge);touch-action:none;z-index:3}
+.three-pane-resizer:hover,.three-pane-resizer:focus-visible{background:var(--accent);outline:none}
+.three-pane-resizer:before{content:'';position:absolute;left:2px;top:50%;width:2px;height:27px;transform:translateY(-50%);background:color-mix(in srgb,var(--text) 20%,transparent);border-radius:2px}
+.three-pane-list{border-right:0}
+.three-post-row{padding:8px 11px}
+.three-post-head{margin-bottom:3px;font-size:10.4px;gap:5px}
+.three-post-title{font-size:12.5px;line-height:1.3;font-weight:670}
+.three-post-thumb{width:51px;height:43px;flex-basis:51px;border-radius:6px}
+.three-post-middle{gap:7px}
+.three-post-stats{margin-top:4px;font-size:10.5px;gap:9px}
+.three-post-row.selected .three-post-title{font-weight:760}
+.post-card.keyboard-selected{outline:2px solid var(--accent);outline-offset:-2px;background:color-mix(in srgb,var(--accent) 6%,var(--panel))}
+@media(max-width:640px){body.three-pane-mode .three-pane-layout{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(170px,36%) minmax(0,1fr)}.three-pane-resizer{display:none}}
+
+.youtube-help{font-size:11px;color:var(--muted);padding:7px 12px;background:var(--accentFade);border-radius:0 0 9px 9px}.youtube-help a{font-weight:750;color:var(--accent);text-decoration:underline}
+
+/* Reddit Reader v1.0.15 — safe Reddit Markdown and highlighters */
+.reddit-markdown,.post-dialog-text{white-space:normal;overflow-wrap:anywhere;line-height:1.66}
+.reddit-markdown p,.post-dialog-text p{margin:0 0 .9em}
+.reddit-markdown p:last-child,.post-dialog-text p:last-child{margin-bottom:0}
+.reddit-markdown a,.post-dialog-text a{color:var(--accent);text-decoration:underline;text-underline-offset:2px;overflow-wrap:anywhere}
+.reddit-markdown a:hover,.post-dialog-text a:hover{filter:brightness(.85)}
+.reddit-markdown :is(h1,h2,h3,h4,h5,h6),.post-dialog-text :is(h1,h2,h3,h4,h5,h6){line-height:1.3;margin:1.2em 0 .35em;font-weight:800}
+.reddit-markdown h1,.post-dialog-text h1{font-size:1.5em}
+.reddit-markdown h2,.post-dialog-text h2{font-size:1.28em}
+.reddit-markdown h3,.post-dialog-text h3{font-size:1.12em}
+.reddit-markdown :is(ul,ol),.post-dialog-text :is(ul,ol){padding-left:1.7em;margin:.6em 0 1em}
+.reddit-markdown li,.post-dialog-text li{margin:.28em 0}
+.reddit-markdown blockquote,.post-dialog-text blockquote{border-left:3px solid var(--accent);padding:4px 0 4px 15px;margin:14px 0;background:var(--accentFade);border-radius:0 7px 7px 0}
+.reddit-markdown code,.post-dialog-text code{padding:.12em .33em;background:var(--hover);border-radius:4px;font-family:Consolas,"Cascadia Code",monospace;font-size:.94em}
+.reddit-markdown pre,.post-dialog-text pre{overflow:auto;padding:14px;background:var(--panel2);border:1px solid var(--edge);border-radius:8px}
+.reddit-markdown pre code,.post-dialog-text pre code{background:transparent;padding:0;white-space:pre}
+.reddit-markdown hr,.post-dialog-text hr{border:0;border-top:1px solid var(--edge);margin:1em 0}
+.reddit-spoiler{background:var(--text);color:transparent;border-radius:3px;cursor:pointer}
+.reddit-spoiler:hover,.reddit-spoiler:focus{color:var(--panel)}
+.rr-user-highlight{color:#15191f!important;border-radius:3px;padding:0 .09em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.highlight-settings{margin-top:24px;border-top:1px solid var(--edge);padding-top:8px}
+.highlight-settings>p{color:var(--muted);font-size:.9rem}
+.highlight-entry{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:12px 0 16px}
+.highlight-entry>input{flex:1 1 220px;min-width:180px;border:1px solid var(--edge);background:var(--panel2);padding:9px;border-radius:9px}
+.highlight-palette{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.highlight-swatch{width:25px;height:25px;border-radius:7px;background:var(--swatch);border:1px solid #0003;transition:transform .12s}
+.highlight-swatch:hover{transform:scale(1.12)}
+.highlight-swatch.selected{outline:2px solid var(--accent);outline-offset:2px}
+.highlight-custom-label{display:flex;align-items:center;gap:5px;font-size:.83rem;color:var(--muted)}
+.highlight-custom-label input{height:28px;width:32px;padding:0;border:0;background:transparent}
+.highlight-rules{display:flex;flex-direction:column;gap:8px}
+.highlight-rule{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:8px 10px;background:var(--panel2);border-radius:8px}
+.highlight-example{color:#15191f;border-radius:4px;padding:3px 7px;overflow-wrap:anywhere}
+
+/* Coloured subreddit labels in every view; dark ink gives robust contrast on
+   the bright accent-tinted surface, independent of the selected theme. */
+.post-meta .sub-label,.post-dialog-community,.three-pane-detail-head > strong,.three-post-head > span:nth-child(2),.popup .preview-sub > span:nth-child(2){
+ background:var(--community-bg,color-mix(in srgb,var(--accent) 34%,#ffffff 66%));
+ color:var(--community-ink,#192134)!important;border:1px solid color-mix(in srgb,var(--community-bg,var(--accent)) 52%,#fff 48%);
+ border-radius:7px;padding:3px 7px;font-weight:780;line-height:1.3;
+ box-decoration-break:clone;-webkit-box-decoration-break:clone;
+}
+.post-dialog-community,.post-meta .sub-label{display:inline-flex;align-items:center;gap:5px}
+.three-pane-detail-head > strong,.three-post-head > span:nth-child(2){display:inline-flex;align-items:center}
+.post-dialog-community > span:last-child{background:transparent;color:var(--muted)}
+.vote-up{color:var(--accent)!important;font-weight:780;display:inline-flex;align-items:center;white-space:nowrap}
+
+/* Sidebar rows deliberately retain the original neutral theme styling.
+   Per-feed colours now belong exclusively to article subreddit labels. */
+/* Removing the oversized logo header gives the library additional vertical room. */
+.reader .sidebar .side-list{padding-top:9px}
+/* The date is metadata, not part of the coloured subreddit pill. */
+.post-dialog-community{background:transparent!important;color:var(--muted)!important;border:0!important;padding:0!important}
+.post-dialog-community > b{background:var(--community-bg,color-mix(in srgb,var(--accent) 34%,#fff 66%));color:var(--community-ink,#192134)!important;border:1px solid color-mix(in srgb,var(--community-bg,var(--accent)) 52%,#fff 48%);border-radius:7px;padding:3px 7px}
+.reddit-markdown table,.post-dialog-text table{border-collapse:collapse;max-width:100%;display:block;overflow-x:auto;margin:14px 0}
+.reddit-markdown th,.reddit-markdown td,.post-dialog-text th,.post-dialog-text td{border:1px solid var(--edge);padding:7px 11px;text-align:left}
+.reddit-markdown th,.post-dialog-text th{background:var(--panel2);font-weight:750}
+
+/* v1.0.16: reader controls, notification rules and clean compact settings. */
+.side-bottom{display:flex;flex-direction:column;gap:8px}
+.sidebar-bottom-actions{display:flex;gap:7px;width:100%}
+.sidebar-bottom-actions .btn{flex:1;min-width:0}
+.sidebar-rules-btn{width:100%;display:flex;gap:8px;justify-content:center;align-items:center}
+.add-type-tabs{display:inline-flex;margin:8px 0 15px;flex-wrap:wrap}
+#add-sub-list[hidden],#add-search-list[hidden]{display:none!important}
+.rule-list{max-height:190px;overflow:auto;display:flex;flex-direction:column;gap:7px;margin-bottom:15px}
+.rule-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px;background:var(--panel2);border:1px solid var(--edge);border-radius:9px}
+.rule-row label{display:flex;align-items:center;gap:8px;min-width:0;flex:1;flex-wrap:wrap}
+.rule-row label small{color:var(--muted);font-size:11px;flex-basis:100%;padding-left:24px}
+.rule-row .btn{flex-shrink:0}
+.reading-type-controls{display:inline-flex;align-items:center;gap:5px;background:var(--panel2);border:1px solid var(--edge);border-radius:9px;padding:3px 5px;flex-shrink:0}
+.reading-type-controls label{display:inline-flex;align-items:center;gap:3px;font-size:11px;color:var(--muted)}
+.reading-type-controls select,.reading-type-controls input{background:var(--panel);color:var(--text);border:1px solid var(--edge);border-radius:6px;font-size:11px;max-width:145px;min-height:25px;padding:2px 4px}
+.reading-type-controls input[type=number]{max-width:48px;text-align:center}
+/* Shared article typography for popup and three-pane reader. */
+body[data-reading-font=system]{--reading-font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+body[data-reading-font=segoe]{--reading-font-family:"Segoe UI",system-ui,sans-serif}
+body[data-reading-font=aptos]{--reading-font-family:Aptos,Calibri,"Segoe UI",sans-serif}
+body[data-reading-font=calibri]{--reading-font-family:Calibri,"Segoe UI",sans-serif}
+body[data-reading-font=candara]{--reading-font-family:Candara,Calibri,"Segoe UI",sans-serif}
+body[data-reading-font=corbel]{--reading-font-family:Corbel,Calibri,"Segoe UI",sans-serif}
+body[data-reading-font=arial]{--reading-font-family:Arial,Helvetica,sans-serif}
+body[data-reading-font=helvetica]{--reading-font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
+body[data-reading-font=verdana]{--reading-font-family:Verdana,Geneva,sans-serif}
+body[data-reading-font=tahoma]{--reading-font-family:Tahoma,"Segoe UI",sans-serif}
+body[data-reading-font=trebuchet]{--reading-font-family:"Trebuchet MS",Verdana,sans-serif}
+body[data-reading-font=roboto]{--reading-font-family:Roboto,"Segoe UI",Arial,sans-serif}
+body[data-reading-font=inter]{--reading-font-family:Inter,"Segoe UI",system-ui,sans-serif}
+body[data-reading-font=opensans]{--reading-font-family:"Open Sans","Segoe UI",sans-serif}
+body[data-reading-font=notosans]{--reading-font-family:"Noto Sans",Arial,sans-serif}
+body[data-reading-font=sourcesans]{--reading-font-family:"Source Sans 3","Source Sans Pro",Arial,sans-serif}
+body[data-reading-font=lato]{--reading-font-family:Lato,"Segoe UI",Arial,sans-serif}
+body[data-reading-font=montserrat]{--reading-font-family:Montserrat,"Segoe UI",Arial,sans-serif}
+body[data-reading-font=poppins]{--reading-font-family:Poppins,"Segoe UI",Arial,sans-serif}
+body[data-reading-font=nunito]{--reading-font-family:"Nunito Sans",Arial,sans-serif}
+body[data-reading-font=georgia]{--reading-font-family:Georgia,Cambria,serif}
+body[data-reading-font=cambria]{--reading-font-family:Cambria,Georgia,serif}
+body[data-reading-font=palatino]{--reading-font-family:"Palatino Linotype",Palatino,"Book Antiqua",serif}
+body[data-reading-font=garamond]{--reading-font-family:Garamond,"EB Garamond",Georgia,serif}
+body[data-reading-font=baskerville]{--reading-font-family:Baskerville,"Libre Baskerville",Georgia,serif}
+body[data-reading-font=times]{--reading-font-family:"Times New Roman",Times,serif}
+body[data-reading-font=serif]{--reading-font-family:Georgia,serif}
+body[data-reading-font=mono]{--reading-font-family:Consolas,"Cascadia Code",monospace}
+body[data-reading-font=consolas]{--reading-font-family:Consolas,"Cascadia Code",monospace}
+body[data-reading-font=cascadia]{--reading-font-family:"Cascadia Code",Consolas,monospace}
+body[data-reading-font=courier]{--reading-font-family:"Courier New",Courier,monospace}
+.post-dialog-text,.post-dialog-text .reddit-markdown,.three-pane-detail .post-dialog-text,.three-pane-detail .reddit-markdown,.post-media-expand .reddit-markdown{font-family:var(--reading-font-family,system-ui);font-size:var(--reading-size,15px);line-height:var(--reading-line,1.65)}
+.post-dialog-scroll h2,.three-pane-detail-content h2{font-family:var(--reading-font-family,system-ui);font-size:clamp(21px,calc(var(--reading-size,15px) * 1.65),40px)}
+.post-dialog-top{flex-wrap:wrap}.post-dialog-top .reading-type-controls{margin-left:auto}
+.three-pane-detail-head{flex-wrap:wrap}.three-pane-detail-head .reading-type-controls{margin-left:auto}
+@media(max-width:1100px){.topbar>.reading-type-controls{max-width:200px}.topbar>.reading-type-controls select{max-width:72px}}
+/* Read items retain muted typography even when keyboard-selected. Only the selection surface changes. */
+.post-card.keyboard-selected.is-read .post-title{color:var(--muted);font-weight:500}
+.three-post-row.selected.is-read .three-post-title{color:var(--muted);font-weight:500}
+.three-post-row.selected.is-read{background:color-mix(in srgb,var(--accent) 11%,var(--panel));box-shadow:inset 3px 0 var(--accent)}
+/* 100ms entrance and exit; hover delay configured in settings. */
+.media-hover-panel{animation:media-hover-enter .1s ease-out;transition:opacity .1s ease-out}
+.media-hover-panel.media-hover-leaving{opacity:0;transition:opacity .1s ease-out}
+@media(prefers-reduced-motion:reduce){.media-hover-panel{animation:none;transition:none}}
+
+/* v1.0.17: themed, fully in-page label colour selector; outside clicks close it. */
+.article-colour-field{position:relative;margin:13px 0;display:flex;flex-direction:column;gap:7px}
+.article-colour-field>label{font-size:.84rem;font-weight:650}
+.article-colour-trigger{display:flex;align-items:center;gap:9px;padding:6px 11px;border:1px solid var(--edge);border-radius:9px;background:var(--panel2);max-width:185px;text-align:left;color:var(--text);font-size:.85rem}
+.article-colour-sample{display:block;width:26px;height:26px;border:1px solid #0002;border-radius:6px;flex-shrink:0}
+.article-colour-picker{position:absolute;top:100%;left:0;z-index:100;width:min(275px,100%);padding:12px;background:var(--panel);border:1px solid var(--edge);border-radius:12px;box-shadow:0 12px 30px #0003}
+.article-colour-picker[hidden]{display:none!important}
+.article-colour-swatches{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;margin-bottom:12px}
+.article-colour-swatch{width:26px;height:26px;background:var(--swatch);border:1px solid #0003;border-radius:6px;cursor:pointer}
+.article-colour-swatch:hover,.article-colour-swatch:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.article-hex-label{font-size:.8rem;color:var(--muted);display:flex;flex-direction:column;gap:4px}
+.article-colour-hex{width:100%;border:1px solid var(--edge);background:var(--panel2);color:var(--text);border-radius:7px;padding:8px;font-family:monospace}
+/* Sidebar selection remains neutral and legible in every theme. */
+.sidebar .sidebar-node > .nav-item,.sidebar .sidebar-node > .folder-header > .nav-item{background:transparent;color:var(--text)}
+.sidebar .sidebar-node > .nav-item:hover,.sidebar .sidebar-node > .folder-header > .nav-item:hover{background:var(--hover)}
+.sidebar .sidebar-node > .nav-item.active,.sidebar .sidebar-node > .folder-header > .nav-item.active{background:color-mix(in srgb,var(--accent) 16%,var(--panel));color:var(--text)}
+
+/* v1.0.19 — image fills the hover popup; clear sidebar section boundaries. */
+.media-hover-panel{padding:4px;box-sizing:border-box}
+.media-hover-stage{flex:none!important;min-height:0;max-height:none;overflow:hidden}
+.media-hover-panel .media-hover-content{display:block;width:100%;height:100%;object-fit:contain;max-width:none;max-height:none;border-radius:3px}
+.sidebar-tree .folder-node::after,.sidebar-tree .feed-node:has(+ .folder-node)::after{content:"";display:block;height:1px;margin:8px 10px;background:var(--edge);pointer-events:none;}
+.article-colour-custom{background:color-mix(in srgb,var(--accent) 12%,var(--panel));display:grid;place-items:center;color:var(--text);font-size:20px;font-weight:700}
+.article-hex-label[hidden]{display:none!important}
+
+/* Custom HSL chooser: the '+' swatch reveals local controls rather than an OS dialog. */
+.article-custom-sliders{display:grid;gap:7px;margin-top:9px}
+.article-custom-sliders label{display:grid;grid-template-columns:70px 1fr;align-items:center;gap:8px;color:var(--muted);font-size:11px}
+.article-custom-sliders input{width:100%;cursor:pointer;accent-color:var(--accent)}
+.article-custom-sliders input[data-colour-range="h"]{accent-color:#ee8630}
+
+/* v1.0.20 — Popup ordering, readable unread count. */
+.popup-order-label{display:flex;align-items:center;gap:7px;font-size:11px;font-weight:750;color:var(--text);min-width:0}
+.popup-order-label select{font-size:11px;min-width:0;max-width:150px;padding:5px 24px 5px 9px;border:1px solid var(--edge);border-radius:8px;background:var(--panel);color:var(--text);font-weight:600}
+.popup .popup-head .count.positive{color:#10141c!important;background:#e6e8fa!important}
+/* Distinct comment heading and bounded discussion preview in both reading surfaces. */
+.reader-comments{margin-top:24px;padding-bottom:6px}
+.reader-comments-heading{display:block;background:color-mix(in srgb,var(--accent) 23%,var(--panel));color:var(--text);font-size:15px;font-weight:800;border-radius:8px;padding:10px 12px;margin:0 0 14px;border:1px solid color-mix(in srgb,var(--accent) 36%,var(--edge))}
+.reader-comment{margin:0 0 13px;padding:9px 12px;background:color-mix(in srgb,var(--panel2) 65%,transparent);border-left:2px solid color-mix(in srgb,var(--accent) 25%,var(--edge));border-radius:4px 8px 8px 4px;margin-left:calc(var(--comment-depth,0)*11px)}
+.reader-comment-head{display:flex;gap:12px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-bottom:5px}
+.reader-comment-head strong{color:var(--text)}
+.reader-comment-body{font-size:var(--reading-size,15px);line-height:var(--reading-line,1.65);overflow-wrap:anywhere}
+.reader-comment-body p{margin:4px 0 8px}
+.reader-comments-status{color:var(--muted);font-size:13px;margin:8px 0}
+
+/* v1.0.21 — Right-align the bulk-read action and pack more subscriptions into the sidebar. */
+.reader .reader-meta{display:flex;align-items:center;gap:12px;justify-content:space-between}
+.reader .reader-meta > p{flex:0 1 auto;min-width:0}
+.reader .reader-meta-actions{display:flex;flex:1 1 auto;min-width:0;align-items:center;justify-content:flex-end;gap:8px;margin-left:auto}
+.reader .reader-meta-actions [data-act="markAll"]{margin-left:auto;flex:0 0 auto}
+/* Rows are 23px high instead of the previous approximately 32px. */
+.reader .sidebar .side-list{padding:5px 6px 9px}
+.reader .sidebar .side-list > .eyebrow{padding:0 8px 4px!important;font-size:9px;line-height:1.2}
+.reader .sidebar .side-section{padding:7px 7px 3px;min-height:22px}
+.reader .sidebar .side-section .eyebrow{font-size:9px;line-height:1.2}
+.reader .sidebar .side-section .icon-btn{width:22px;height:22px;border-radius:5px}
+.reader .sidebar .nav-item{min-height:23px;padding:2px 6px;gap:6px;border-radius:6px;font-size:12px;line-height:1.15}
+.reader .sidebar .nav-item .nav-name{font-size:12px;line-height:1.15;letter-spacing:-.008em}
+.reader .sidebar .nav-glyph,.reader .sidebar .subreddit-favicon,.reader .sidebar .subreddit-icon-fallback{width:18px;height:18px;flex-basis:18px}
+.reader .sidebar .subreddit-icon-fallback img{width:16px;height:16px}
+.reader .sidebar .nav-folder .nav-glyph svg{width:16px;height:16px}
+.reader .sidebar .nav-item .count{font-size:10px;line-height:1.05;padding:2px 4px;min-width:17px;text-align:center;border-radius:6px}
+.reader .sidebar .folder-header .nav-item{padding-right:22px}
+.reader .sidebar .folder-header .folder-toggle{width:19px;height:19px;right:3px;border-radius:5px}
+.reader .sidebar .folder-header .folder-toggle svg{width:12px;height:12px}
+.reader .sidebar .sidebar-tree .folder-node::after,
+.reader .sidebar .sidebar-tree .feed-node:has(+ .folder-node)::after{margin:4px 7px}
+@media(max-width:760px){.reader .reader-meta{gap:7px}.reader .reader-meta-actions{gap:5px}}
+@media(max-width:640px){.reader .sidebar .side-list .nav-item{justify-content:center}.reader .reader-meta{flex-wrap:wrap}}
+
+/* v1.0.23: suppress only the LAST section separator at the root,
+   including when loose feeds appear after the final folder. */
+.reader .sidebar-tree[data-sidebar-parent=""] > .folder-node:not(:has(~ .folder-node))::after{display:none!important}
+/* Original pixel dimensions, shown only for successfully loaded images. */
+.media-hover-dimensions{position:absolute;top:9px;left:9px;z-index:3;border-radius:5px;background:rgba(0,0,0,.82);color:#fff;font:700 11px/1.2 system-ui, sans-serif;padding:5px 7px;box-shadow:0 1px 4px #0004;pointer-events:none;font-variant-numeric:tabular-nums;}
+.media-hover-dimensions[hidden]{display:none!important}
+/* A pinned preview may be larger than the viewport while the stage and image scale together. */
+.media-hover-panel.media-hover-centered{overflow:visible}
+.media-hover-panel.media-hover-centered .media-hover-stage{overflow:hidden}
+
+#item-custom-refresh-field[hidden]{display:none!important}
+
+/* v1.0.24: settings header, integrated outbound media link and original hover shadow. */
+.options-header .header-language{display:flex;align-items:center;gap:8px;font-size:12px;white-space:nowrap;color:var(--muted)}
+.options-header .header-language select{max-width:190px;min-width:140px;padding:7px 26px 7px 9px;border:1px solid var(--edge);border-radius:8px;background:var(--panel);color:var(--text);font:inherit}
+.drive-field-caption{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.drive-field-caption a{font-size:12px;font-weight:500;display:inline-flex;align-items:center;gap:4px;color:var(--accent)}
+.post-dialog-gallery .post-media-link-footer{display:flex;align-items:center;gap:10px;padding:12px 14px;background:#17191f;color:#f8f9fc;text-decoration:none;min-width:0}
+.post-dialog-gallery .post-media-link-footer:hover{background:#252a35;color:#fff}
+.post-media-link-name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600;font-size:13px}
+.post-media-link-url{max-width:42%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#c0c7d4;font-size:11px}
+.post-dialog-gallery.post-dialog-link-only{background:transparent}
+.media-hover-panel{box-shadow:0 18px 70px #0009,0 4px 16px #0004}
+@media(max-width:680px){.options-header{flex-wrap:wrap}.options-header .header-language{margin-left:auto}.post-media-link-url{max-width:35%}}
+
+/* v1.0.25 — unified read-state palette for List, Magazine, Cards and Three-pane. */
+.reader{
+ --read-bg:color-mix(in srgb,var(--panel) 62%,var(--bg) 38%);
+ --read-title:color-mix(in srgb,var(--text) 77%,var(--bg) 23%);
+ --read-secondary:color-mix(in srgb,var(--muted) 82%,var(--text) 18%);
+ --read-border:color-mix(in srgb,var(--edge) 82%,var(--bg) 18%);
+}
+.reader .post-card.is-read,
+.reader .post-list.list .post-card.is-read{
+ opacity:1;
+ background:var(--read-bg);
+ border-color:var(--read-border);
+ box-shadow:none;
+}
+.reader .post-card.is-read .post-title,
+.reader .post-card.keyboard-selected.is-read .post-title,
+.reader .post-list.list .post-card.is-read .post-title{
+ color:var(--read-title);
+ font-weight:550;
+}
+.reader .post-card.is-read .post-excerpt,
+.reader .post-card.is-read .post-meta,
+.reader .post-card.is-read .post-foot{color:var(--read-secondary)}
+.reader .post-card.is-read:hover,
+.reader .post-card.is-read:focus-within,
+.reader .post-list.list .post-card.is-read:hover{opacity:1;background:color-mix(in srgb,var(--read-bg) 82%,var(--hover) 18%)}
+.reader .post-card.keyboard-selected.is-read{background:color-mix(in srgb,var(--accent) 10%,var(--read-bg))}
+.reader .three-post-row.is-read{background:var(--read-bg);color:var(--read-secondary)}
+.reader .three-post-row.is-read .three-post-title,
+.reader .three-post-row.selected.is-read .three-post-title{color:var(--read-title);font-weight:550}
+.reader .three-post-row.is-read .three-post-head,
+.reader .three-post-row.is-read .three-post-stats{color:var(--read-secondary)}
+.reader .three-post-row.is-read:hover{background:color-mix(in srgb,var(--read-bg) 82%,var(--hover) 18%)}
+.reader .three-post-row.selected.is-read{background:color-mix(in srgb,var(--accent) 12%,var(--read-bg));box-shadow:inset 3px 0 var(--accent)}
+/* Theme-aware controls, separators and badges: never force light-mode ink. */
+.reader .sidebar .nav-item .count,
+.reader .sidebar .nav-item .count.positive{color:var(--text);background:var(--panel2);border-color:var(--edge)}
+.reader .sidebar .side-bottom .btn{color:var(--text);background:var(--panel2);border-color:var(--edge)}
+.reader .sidebar .side-bottom .btn.primary{color:#fff;background:var(--accent);border-color:var(--accent)}
+.reader .sidebar .side-bottom .btn:disabled{opacity:.5}
+.reader .sidebar .eyebrow{color:var(--muted)}
+.reader .sidebar .sidebar-tree .folder-node::after,
+.reader .sidebar .sidebar-tree .feed-node:has(+ .folder-node)::after{background:var(--edge)}
+
+/* v1.0.26 — unified actual transparency for read items (all four layouts). */
+.reader .post-list.magazine .post-card.is-read,
+.reader .post-list.list .post-card.is-read,
+.reader .post-list.cards .post-card.is-read,
+.reader .three-pane-list .three-post-row.is-read { opacity:.64; }
+.reader .post-list.magazine .post-card.is-read:hover,
+.reader .post-list.list .post-card.is-read:hover,
+.reader .post-list.cards .post-card.is-read:hover,
+.reader .post-list .post-card.is-read:focus-within,
+.reader .three-pane-list .three-post-row.is-read:hover,
+.reader .three-pane-list .three-post-row.is-read:focus-visible,
+.reader .three-pane-list .three-post-row.is-read.selected { opacity:1; }
+/* Match the Open Reader control's border-box height, without stretching its label. */
+.options-header .header-language select { height:42px; box-sizing:border-box; }
+/* Sidebar density is vertical-only and applies to navigation, folders and section spacing. */
+.reader .sidebar .nav-item { min-height:var(--sidebar-row-height,23px); padding-top:var(--sidebar-row-padding,3.25px); padding-bottom:var(--sidebar-row-padding,3.25px); }
+.reader .sidebar .side-section { padding-top:var(--sidebar-section-padding,7px); padding-bottom:var(--sidebar-folder-margin,4px); }
+.reader .sidebar .sidebar-tree .folder-node::after,
+.reader .sidebar .sidebar-tree .feed-node:has(+ .folder-node)::after { margin-top:var(--sidebar-folder-margin,4px); margin-bottom:var(--sidebar-folder-margin,4px); }
+.reader .sidebar-density-control {display:flex;align-items:center;gap:9px;width:100%;padding:2px 7px 7px;color:var(--muted);box-sizing:border-box}
+.reader .sidebar-density-icon {font-size:14px;line-height:1;flex:none}
+.reader .sidebar-density-control input[type="range"] {min-width:0;flex:1;appearance:none;-webkit-appearance:none;background:transparent;height:20px;cursor:pointer;accent-color:var(--accent)}
+.reader .sidebar-density-control input[type="range"]::-webkit-slider-runnable-track {height:4px;background:color-mix(in srgb,var(--accent) 45%,var(--edge));border-radius:100px}
+.reader .sidebar-density-control input[type="range"]::-webkit-slider-thumb {-webkit-appearance:none;appearance:none;width:14px;height:14px;border-radius:50%;border:2px solid var(--panel);background:var(--accent);box-shadow:0 0 0 1px var(--edge),0 1px 3px #0003;margin-top:-5px}
+.reader .sidebar-density-control input[type="range"]:focus-visible {outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.reader .sidebar-density-control input[type="range"]::-moz-range-track {height:4px;background:var(--edge);border-radius:100px}
+.reader .sidebar-density-control input[type="range"]::-moz-range-thumb {width:14px;height:14px;border-radius:50%;background:var(--accent);border:2px solid var(--panel)}
+@media(max-width:720px){.reader .sidebar-density-control {display:none}}
+
+/* v1.0.27 — dark contrast, solid upvote and unread-first ordering controls. */
+.popup .popup-markall:not(:disabled){color:var(--text);background:var(--panel2);border:1px solid var(--edge)}
+.popup .popup-footer{color:var(--text);background:var(--panel2);border-top:1px solid var(--edge)}
+.popup .popup-footer:hover,.popup .popup-markall:not(:disabled):hover{background:var(--hover);color:var(--text)}
+.popup .popup-markall:disabled{color:var(--muted);opacity:.72}
+.vote-up{color:var(--vote-ink,var(--accent))!important;gap:3px;font-weight:780}
+.vote-arrow{width:15px;height:15px;display:inline-block;flex:none;transform:translateY(-1px);fill:currentColor}
+body[data-theme=dark],body[data-theme=oled],body[data-theme=slate]{--vote-ink:#ff7586}
+.reader .sidebar .sidebar-rules-inline{display:flex;width:calc(100% - 12px);margin:8px 6px 2px;align-items:center;justify-content:center;color:var(--text);background:var(--panel2);border:1px solid var(--edge)}
+.reader .sidebar .sidebar-rules-inline:hover{background:var(--hover)}
+.unread-first-toggle{display:inline-flex;align-items:center;gap:8px;cursor:pointer;color:var(--text);font-size:12px;font-weight:600;white-space:nowrap;user-select:none}
+.unread-first-toggle input{position:absolute;width:1px;height:1px;opacity:0}
+.unread-first-track{position:relative;display:inline-block;width:33px;height:19px;flex:0 0 33px;border-radius:99px;background:var(--edge);border:1px solid var(--muted);transition:background .2s,border-color .2s}
+.unread-first-track::after{content:'';position:absolute;left:2px;top:2px;width:13px;height:13px;border-radius:50%;background:var(--panel);box-shadow:0 1px 3px #0005;transition:transform .2s}
+.unread-first-toggle input:checked+.unread-first-track{background:var(--accent);border-color:var(--accent)}
+.unread-first-toggle input:checked+.unread-first-track::after{transform:translateX(14px);background:#fff}
+.unread-first-toggle input:focus-visible+.unread-first-track{outline:2px solid var(--accent);outline-offset:3px}
+@media(max-width:850px){.unread-first-toggle{font-size:11px;white-space:normal}}
+
+/* Keep disabled popup actions readable on dark backgrounds. */
+.popup .popup-markall:disabled{color:var(--text);opacity:.67;background:var(--panel2);border:1px solid var(--edge)}
+
+/* v1.0.28: The reader title/actions align with the same configurable width as the article content. */
+.reader .topbar{padding:0 12px}
+.reader .topbar-inner{width:100%;max-width:var(--reader-width,1040px);min-width:0;margin:0 auto;padding:0 30px;display:flex;align-items:center;gap:14px}
+.reader .topbar-inner .title-block{min-width:0}
+.reader .topbar-inner .top-controls{flex:0 0 auto}
+.reader.three-pane-mode .topbar-inner{max-width:none}
+@media(max-width:1000px){.reader .topbar-inner{padding:0 18px}}
+@media(max-width:720px){.reader .topbar-inner{gap:7px}.reader .topbar-inner .title-block{min-width:75px}}
+
+/* v1.0.29: Refresh lives immediately beside the heading, without stealing title space. */
+.reader .reader-view-heading{display:flex;align-items:center;gap:11px;min-width:0;flex:1 1 auto}
+.reader .reader-view-heading .title-block{flex:0 1 auto;min-width:0;max-width:calc(100% - 45px)}
+.reader .reader-view-heading .title-block h1{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.reader .reader-view-refresh{flex:0 0 34px;width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;color:var(--muted);border-radius:9px}
+.reader .reader-view-refresh:hover{background:var(--hover);color:var(--text)}
+.reader .reader-view-refresh:disabled{opacity:1;cursor:progress}
+.reader .reader-view-refresh.is-refreshing svg{animation:reader-view-refresh-spin .9s linear infinite;transform-origin:center}
+@keyframes reader-view-refresh-spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.reader .reader-view-refresh.is-refreshing svg{animation:none}}
+@media(max-width:720px){.reader .reader-view-heading{gap:4px}.reader .reader-view-refresh{width:30px;height:30px;flex-basis:30px}.reader .reader-view-heading .title-block{max-width:calc(100% - 34px)}}
+
+/* v1.0.30: Match title toolbar's content edges to the reader content edges.
+   Both elements use identical width, horizontal padding and border-box sizing. */
+.reader .topbar{padding-left:0;padding-right:0;width:100%}
+.reader .topbar-inner{width:100%;max-width:var(--reader-width,1040px);padding-left:30px;padding-right:30px;margin-inline:auto;box-sizing:border-box}
+.reader .reader-inner{width:100%;max-width:var(--reader-width,1040px);padding-left:30px;padding-right:30px;box-sizing:border-box}
+.reader.three-pane-mode .topbar-inner{max-width:none}
+.reader.three-pane-mode .reader-inner{max-width:none;padding:0}
+@media(max-width:1000px){.reader .topbar-inner,.reader:not(.three-pane-mode) .reader-inner{padding-left:18px;padding-right:18px}}
+@media(max-width:720px){.reader .topbar-inner,.reader:not(.three-pane-mode) .reader-inner{padding-left:12px;padding-right:12px}}
+/* The All posts refresh appears immediately before its unread count. */
+/* v1.0.31: keep refresh + count in the normal flex flow instead of overlapping. */
+.sidebar-all-row{display:flex;align-items:center;min-width:0;width:100%;gap:3px;border-radius:7px}
+.sidebar-all-row>.nav-item{min-width:0;flex:1 1 auto;width:0;padding-right:4px!important}
+.sidebar-all-row:has(>.nav-item.active){background:color-mix(in srgb,var(--accent) 16%,var(--panel))}
+.sidebar-all-row:has(>.nav-item.active)>.nav-item{background:transparent!important}
+.sidebar-all-row .sidebar-all-refresh{position:static;transform:none;flex:0 0 21px;width:21px;height:21px;min-width:21px;padding:0;display:grid;place-items:center;border-radius:5px;color:var(--muted);z-index:1}
+.reader .sidebar .sidebar-all-row>.sidebar-all-count{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;min-width:17px;max-width:none;white-space:nowrap;margin:0 6px 0 0;padding:2px 4px;font-size:10px;line-height:1.05;border-radius:6px;border:1px solid var(--edge);color:var(--text);background:var(--panel2);font-weight:650}
+.reader .sidebar .sidebar-all-row:has(>.nav-item.active)>.sidebar-all-count{background:color-mix(in srgb,var(--accent) 10%,var(--panel2))}
+@media(max-width:720px){.sidebar-all-row>.sidebar-all-refresh{display:none}.reader .sidebar .sidebar-all-row>.sidebar-all-count{display:none}}
+.sidebar-all-row .sidebar-all-refresh:hover{color:var(--text);background:var(--hover)}
+.sidebar-all-row .sidebar-all-refresh svg{width:13px;height:13px}
+.sidebar-all-row .sidebar-all-refresh.is-refreshing svg{animation:sidebar-refresh-spin 850ms linear infinite}
+@keyframes sidebar-refresh-spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.sidebar-all-row .sidebar-all-refresh.is-refreshing svg{animation:none}}
+/* No blank self-text card for link posts. */
+.post-dialog-text[hidden],.three-pane-detail .post-dialog-text[hidden]{display:none!important;padding:0!important;margin:0!important;min-height:0!important}
+
+/* v1.0.32: quiet, transparent All posts refresh hover, retaining keyboard focus. */
+.sidebar-all-row .sidebar-all-refresh:hover,
+.sidebar-all-row .sidebar-all-refresh:active,
+.sidebar-all-row .sidebar-all-refresh:focus-visible {background:transparent!important;box-shadow:none!important;}
+.sidebar-all-row .sidebar-all-refresh:hover {color:var(--text);}
+.sidebar-all-row .sidebar-all-refresh:focus-visible {outline:2px solid var(--accent);outline-offset:1px;}
+
+/* v1.0.33: Read-only feed properties dialog. */
+.feed-properties{display:flex;flex-direction:column;gap:14px;margin-top:18px}
+.feed-property{display:flex;flex-direction:column;gap:6px;font-size:.91rem;min-width:0}
+.feed-property>strong{font-weight:700;color:var(--text)}
+.feed-property>span{color:var(--muted);overflow-wrap:anywhere}
+.feed-property-link{color:var(--accent);overflow-wrap:anywhere;text-decoration:underline;text-underline-offset:2px}
+.feed-property-subreddits{display:flex;flex-wrap:wrap;gap:6px;max-height:210px;overflow:auto}
+.feed-property-chip{font-size:.82rem;padding:5px 9px;border:1px solid var(--edge);border-radius:8px;background:var(--panel2);color:var(--text)}
+.feed-context-menu [data-feed-action="properties"]{margin-bottom:2px}
+
+/* v1.0.34: All posts refresh has no hover/pressed/focus surface.
+   The parent active-row highlight is deliberately preserved. */
+.reader .sidebar .sidebar-all-row > .sidebar-all-refresh,
+.reader .sidebar .sidebar-all-row > .sidebar-all-refresh:hover,
+.reader .sidebar .sidebar-all-row > .sidebar-all-refresh:active,
+.reader .sidebar .sidebar-all-row > .sidebar-all-refresh:focus,
+.reader .sidebar .sidebar-all-row > .sidebar-all-refresh:disabled {
+    background:transparent!important;
+    background-color:transparent!important;
+    background-image:none!important;
+    box-shadow:none!important;
+    filter:none;
+}
+.reader .sidebar .sidebar-all-row > .sidebar-all-refresh::before,
+.reader .sidebar .sidebar-all-row > .sidebar-all-refresh::after {
+    content:none!important;
+    display:none!important;
+}
+.reader .sidebar .sidebar-all-row > .sidebar-all-refresh:focus-visible {
+    outline:2px solid var(--accent);
+    outline-offset:1px;
+}
+
+/* v1.0.35 — Avoid double separators at the end of Reading settings. */
+.options .setting-row:has(> select[data-key="popupGrouping"]){border-bottom:0}
+.options .highlight-settings{border-top:0}
+
+/* v1.0.36: notification rule builder */
+.modal:has(#rule-event){width:min(640px,100%)}
+.modal:has(#rule-event) .field{margin-top:10px}
+.rule-section-title{margin:21px 0 10px;padding-bottom:7px;border-bottom:1px solid var(--edge);font-size:.76rem;letter-spacing:.09em;color:var(--accent);font-weight:800}
+.rule-condition{padding:12px;margin:9px 0;background:var(--panel2);border:1px solid var(--edge);border-radius:12px}
+.rule-condition-top{display:flex;align-items:end;gap:12px;justify-content:flex-end}
+.rule-condition-top .rule-join-wrap{display:flex;align-items:center;gap:9px;margin-right:auto;font-size:.8rem}
+.rule-join-wrap select{padding:5px 9px;background:var(--panel);color:var(--text);border:1px solid var(--edge);border-radius:8px}
+.rule-not,.rule-action{display:flex;align-items:center;gap:8px;font-weight:600;font-size:.91rem}
+.rule-condition-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rule-action{padding:10px 0}
+.rule-condition [hidden],#rule-target-wrap[hidden],.rule-join-wrap[hidden]{display:none!important}
+@media(max-width:550px){.rule-condition-grid{grid-template-columns:1fr}}
+
+/* v1.0.37 — Section-scoped article/unread counts live under the reader title.
+   The filter row now starts with its dropdown, while the read-all button remains at the right. */
+.reader .reader-meta-actions{flex:1 1 100%;width:100%;margin-left:0;justify-content:flex-start;flex-wrap:wrap}
+.reader .reader-meta-actions [data-act="markAll"]{margin-left:auto}
+.reader .reader-view-counts{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-variant-numeric:tabular-nums}
+@media(max-width:600px){.reader .reader-meta-actions{row-gap:7px}.reader .reader-meta-actions [data-act="markAll"]{margin-left:auto}}
+
+/* v1.0.38: compact action group for existing notification rules. */
+.rule-row-buttons{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end;align-items:center}
+.rule-row-buttons .btn{padding:5px 8px;white-space:nowrap}
+@media(max-width:550px){.rule-row{align-items:flex-start;flex-direction:column}.rule-row-buttons{align-self:flex-end}}
+
+/* v1.0.39 — compact Rules action in reader sidebar. */
+.reader .sidebar .sidebar-rules-inline {
+  font-size: 12px;
+  padding: 5px 9px;
+  min-height: 29px;
+  gap: 6px;
+  border-radius: 9px;
+  margin-top: 6px;
+  margin-bottom: 0;
+}
+.reader .sidebar .sidebar-rules-inline svg { width: 14px; height: 14px; }
+
+/* v1.0.40 — full-height Inoreader-inspired reader action rail.  The feed
+   sidebar remains separately resizable and keeps the compactness slider. */
+.reader {
+  --reader-rail-width: 46px;
+  --reader-rail-bg: #e6eaed;
+  --reader-rail-ink: #526b82;
+  --reader-rail-border: #d7dde3;
+  --reader-rail-hover: #d4dde7;
+}
+.reader[data-theme=dark] {
+  --reader-rail-bg: #171b26;
+  --reader-rail-ink: #c3d0e3;
+  --reader-rail-border: #35394b;
+  --reader-rail-hover: #313b50;
+}
+.reader[data-theme=oled] {
+  --reader-rail-bg: #08090b;
+  --reader-rail-ink: #e1e4ec;
+  --reader-rail-border: #292930;
+  --reader-rail-hover: #24252b;
+}
+.reader[data-theme=slate] {
+  --reader-rail-bg: #19232e;
+  --reader-rail-ink: #c8d9ed;
+  --reader-rail-border: #37465a;
+  --reader-rail-hover: #344255;
+}
+.reader[data-theme=sepia] {
+  --reader-rail-bg: #e5dac6;
+  --reader-rail-ink: #6c5a43;
+  --reader-rail-border: #d5c5ac;
+  --reader-rail-hover: #d9c9b0;
+}
+.reader[data-theme=solarized] {
+  --reader-rail-bg: #e4dec8;
+  --reader-rail-ink: #536e75;
+  --reader-rail-border: #cec6ad;
+  --reader-rail-hover: #d1ccb8;
+}
+.reader #app { position:relative; }
+.reader .reader-action-rail {
+  display:flex; flex:0 0 var(--reader-rail-width); width:var(--reader-rail-width);
+  height:100vh; min-height:0; flex-direction:column; align-items:center;
+  background:var(--reader-rail-bg); color:var(--reader-rail-ink);
+  border-right:1px solid var(--reader-rail-border);
+  padding:12px 5px 14px; z-index:9; position:relative; overflow:visible;
+}
+.reader .reader-rail-top,.reader .reader-rail-bottom {
+  display:flex; width:100%; align-items:center; flex-direction:column; gap:10px;
+}
+.reader .reader-rail-bottom { margin-top:auto; }
+.reader .reader-rail-action {
+  position:relative; flex:0 0 auto; display:flex; align-items:center; justify-content:center;
+  width:35px; height:35px; padding:0; border:0; border-radius:9px;
+  background:transparent; color:var(--reader-rail-ink);
+  transition:background-color .16s ease,color .16s ease;
+}
+.reader .reader-rail-action:hover,.reader .reader-rail-action:focus-visible {
+  background:var(--reader-rail-hover); color:var(--text);
+}
+.reader .reader-rail-add {color:var(--accent);}
+.reader .reader-rail-add:hover,.reader .reader-rail-add:focus-visible {color:var(--accent);}
+.reader .reader-rail-action svg {width:20px;height:20px;stroke-width:1.9;}
+.reader .reader-rail-add svg {width:23px;height:23px;stroke-width:2.2;}
+.reader .reader-rail-action::after {
+  content:attr(data-tooltip); position:absolute; inset:auto auto auto calc(100% + 10px);
+  top:50%; transform:translateY(-50%); background:var(--text); color:var(--panel);
+  border:1px solid var(--edge); border-radius:7px; padding:6px 9px;
+  font-size:12px; font-weight:600; line-height:1.3; white-space:nowrap;
+  opacity:0; visibility:hidden; pointer-events:none; z-index:100;
+  box-shadow:0 4px 14px #0003; transition:opacity .12s ease,visibility .12s ease;
+}
+.reader .reader-rail-action:hover::after,.reader .reader-rail-action:focus-visible::after {
+  opacity:1; visibility:visible;
+}
+.reader .sidebar {min-width:0;}
+.reader .sidebar-resizer {
+  left:calc(var(--reader-rail-width) + var(--sidebar-width,242px) - 2px);
+}
+.reader .sidebar .side-bottom {
+  padding:7px 8px 8px;
+}
+.reader .sidebar .sidebar-density-control {padding-bottom:0;}
+@media(max-width:1000px) {
+  .reader .sidebar-resizer {left:calc(var(--reader-rail-width) + 210px - 2px);}
+}
+@media(max-width:720px) {
+  .reader {--reader-rail-width:44px;}
+  .reader .sidebar-resizer {left:calc(var(--reader-rail-width) + 62px - 2px);}
+  .reader .sidebar .side-bottom {display:none;}
+  .reader .reader-action-rail {padding-inline:4px;}
+}
+@media(prefers-reduced-motion:reduce) {
+  .reader .reader-rail-action,.reader .reader-rail-action::after {transition:none;}
+}
+
+/* v1.0.42 — narrow collapsible icon rail. The resizer reads the same
+   --reader-rail-width variable, including on compact-width windows. */
+.reader[data-rail-collapsed="true"] { --reader-rail-width: 8px; }
+.reader .reader-rail-collapse { height:27px; opacity:.78; }
+.reader .reader-rail-collapse svg { width:16px; height:16px; transform:scaleX(-1); }
+.reader .reader-rail-expand { display:none; }
+.reader[data-rail-collapsed="true"] .reader-action-rail {
+  padding:0; cursor:e-resize; transition:background-color .15s ease;
+}
+.reader[data-rail-collapsed="true"] .reader-rail-top,
+.reader[data-rail-collapsed="true"] .reader-rail-bottom { display:none; }
+.reader[data-rail-collapsed="true"] .reader-rail-expand {
+  display:flex; align-items:center; justify-content:center;
+  width:100%; height:100%; padding:0; border:0; border-radius:0;
+  background:transparent; color:var(--reader-rail-ink); cursor:e-resize;
+}
+.reader[data-rail-collapsed="true"] .reader-rail-expand::before {
+  content:""; display:block; width:3px; height:47px; border-radius:4px;
+  background:currentColor; opacity:.62; transition:opacity .15s ease;
+}
+.reader[data-rail-collapsed="true"] .reader-rail-expand:hover,
+.reader[data-rail-collapsed="true"] .reader-rail-expand:focus-visible {
+  background:var(--reader-rail-hover); color:var(--text);
+}
+.reader[data-rail-collapsed="true"] .reader-rail-expand:hover::before,
+.reader[data-rail-collapsed="true"] .reader-rail-expand:focus-visible::before {opacity:1;}
+.reader[data-rail-collapsed="true"] .reader-rail-expand:focus-visible {
+  outline:2px solid var(--accent); outline-offset:-2px;
+}
+@media (max-width:720px) {
+  .reader[data-rail-collapsed="true"] { --reader-rail-width: 8px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .reader[data-rail-collapsed="true"] .reader-action-rail,
+  .reader[data-rail-collapsed="true"] .reader-rail-expand::before {transition:none;}
+}
+
+/* v1.0.41 — Small List: Inoreader-style, continuous one-line articles.
+   Reuses the same reader width and theme tokens as every other view. */
+.reader .post-list.small-list {
+    display:block;
+    gap:0;
+    min-width:0;
+    overflow:hidden;
+    background:var(--panel);
+    border:1px solid var(--edge);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+}
+.reader .post-list.small-list .post-card.small-list-row {
+    display:flex;
+    align-items:center;
+    gap:14px;
+    min-width:0;
+    min-height:33px;
+    padding:5px 12px;
+    margin:0;
+    border:0;
+    border-bottom:1px solid var(--edge);
+    border-radius:0;
+    box-shadow:none;
+    background:transparent;
+    white-space:nowrap;
+    cursor:pointer;
+    transition:background-color .12s ease,opacity .12s ease;
+}
+.reader .post-list.small-list .small-list-row:last-child {border-bottom:0}
+.reader .post-list.small-list .small-list-row:hover {background:var(--hover)}
+.reader .post-list.small-list .small-list-row:focus-visible {
+    outline:2px solid var(--accent);
+    outline-offset:-2px;
+    position:relative;
+    z-index:1;
+}
+.reader .post-list.small-list .small-list-feed {
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    /* Keep article titles 50px left of the original feed column (50px to the right of v1.0.72). */
+    flex:0 0 calc(clamp(125px, 20%, 190px) - 50px);
+    min-width:0;
+    overflow:hidden;
+    color:var(--muted);
+    font-size:12px;
+    line-height:19px;
+}
+.reader .post-list.small-list .small-list-community-icon {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    flex:0 0 17px;
+    width:17px;
+    height:17px;
+}
+.reader .post-list.small-list .small-list-community-icon .subreddit-favicon,
+.reader .post-list.small-list .small-list-community-icon .subreddit-icon-fallback,
+.reader .post-list.small-list .small-list-community-icon .subreddit-icon-fallback img {
+    width:16px;
+    height:16px;
+}
+.reader .post-list.small-list .small-list-feed-name {
+    flex:1 1 auto;
+    min-width:0;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.reader .post-list.small-list .small-list-content {
+    display:block;
+    flex:1 1 0;
+    min-width:0;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    line-height:20px;
+}
+.reader .post-list.small-list .post-title {
+    display:inline;
+    font-size:13px;
+    font-weight:720;
+    letter-spacing:0;
+    line-height:inherit;
+    white-space:inherit;
+    overflow-wrap:normal;
+    color:var(--text);
+}
+.reader .post-list.small-list .small-list-excerpt {
+    display:inline;
+    margin:0 0 0 5px;
+    padding:0;
+    overflow:visible;
+    white-space:inherit;
+    font-size:12.5px;
+    font-weight:400;
+    line-height:inherit;
+    color:var(--muted);
+    -webkit-line-clamp:unset;
+    line-clamp:unset;
+    -webkit-box-orient:initial;
+}
+.reader .post-list.small-list .small-list-row.is-read {
+    opacity:.64;
+    background:var(--read-bg,var(--panel));
+}
+.reader .post-list.small-list .small-list-row.is-read .post-title {
+    color:var(--read-title,var(--text));
+    font-weight:700;
+}
+.reader .post-list.small-list .small-list-row.is-read .small-list-excerpt {color:var(--read-secondary,var(--muted))}
+.reader .post-list.small-list .small-list-row.is-read:hover,
+.reader .post-list.small-list .small-list-row.is-read:focus-visible {opacity:1;background:var(--hover)}
+.reader .post-list.small-list .small-list-row.keyboard-selected {background:var(--accentFade)}
+@media(max-width:700px){
+    .reader .post-list.small-list .post-card.small-list-row {gap:8px;padding:5px 8px;min-height:31px}
+    .reader .post-list.small-list .small-list-feed {flex-basis:25px;font-size:11px;gap:4px}
+    .reader .post-list.small-list .post-title {font-size:12px}
+    .reader .post-list.small-list .small-list-excerpt {font-size:11.5px}
+}
+@media(prefers-reduced-motion:reduce){
+    .reader .post-list.small-list .post-card.small-list-row {transition:none}
+}
+
+
+/* v1.0.43 — compact folder rows, icon-only layout selector and rail shortcuts. */
+.reader .sidebar .folder-header > .nav-item {
+  width:100%; flex:1 1 auto; padding-right:6px !important;
+}
+.reader .sidebar .folder-header .nav-item .count {
+  margin-left:auto; flex-shrink:0;
+}
+.reader .sidebar .folder-header .folder-toggle {display:none !important;}
+.reader .top-controls .segmented {flex:0 0 auto;gap:2px;padding:3px;border-radius:9px;}
+.reader .top-controls .segmented button {
+  display:grid;place-items:center;flex:0 0 30px;
+  width:30px;height:30px;min-width:30px;padding:0;
+  border-radius:6px;color:#121820;
+}
+.reader .top-controls .segmented button.selected {color:#121820;}
+.reader .top-controls .segmented button svg {width:17px;height:17px;flex:0 0 17px;}
+.reader .top-controls .segmented .layout-label {display:none !important;}
+.reader[data-theme="dark"] .top-controls .segmented button,
+.reader[data-theme="oled"] .top-controls .segmented button,
+.reader[data-theme="slate"] .top-controls .segmented button,
+.reader[data-theme="dark"] .top-controls .segmented button.selected,
+.reader[data-theme="oled"] .top-controls .segmented button.selected,
+.reader[data-theme="slate"] .top-controls .segmented button.selected {color:#f1f4fa;}
+.reader .reader-rail-starred.active {background:var(--reader-rail-hover);color:var(--accent);}
+.reader .reader-rail-starred.active:hover {color:var(--accent);}
+.reader .reader-rail-highlighters svg {stroke-width:1.85;}
+@media(max-width:720px){
+  .reader .top-controls .segmented {display:flex;}
+  .reader .top-controls .segmented button {width:27px;min-width:27px;height:28px;flex-basis:27px;}
+  .reader .topbar-inner {flex-wrap:wrap;}
+}
+
+/* Allow two rows of toolbar controls if the icon-only layout selector wraps. */
+@media(max-width:720px){
+  .reader .topbar {height:auto;min-height:71px;padding-top:6px;padding-bottom:6px;}
+  .reader .topbar-inner {row-gap:7px;}
+}
+
+/* v1.0.44: Settings are embedded in the reader, not a browser window. */
+.reader-settings-backdrop {
+  position:fixed; inset:0; z-index:110;
+  display:flex; justify-content:center; align-items:center;
+  padding:clamp(8px,2.5vw,32px);
+  background:rgba(8,12,24,.64);
+}
+.reader-settings-dialog {
+  width:min(1160px,100%); height:min(92vh,920px); min-height:280px;
+  border:1px solid var(--edge); border-radius:16px;
+  background:var(--panel); color:var(--text);
+  box-shadow:0 24px 85px #0007;
+  display:flex; flex-direction:column; min-width:0; overflow:hidden;
+}
+.reader-settings-dialog-head {
+  min-height:46px; display:flex; align-items:center; justify-content:space-between;
+  padding:6px 12px 6px 20px; gap:10px;
+  border-bottom:1px solid var(--edge); background:var(--panel);
+}
+.reader-settings-dialog-title {font-size:14px;font-weight:750;}
+.reader-settings-frame { flex:1; width:100%; min-height:0; border:0; background:var(--bg); }
+.reader-settings-close {width:33px;height:33px;flex:0 0 33px;}
+@media (max-width:720px) {
+  .reader-settings-backdrop {padding:4px;}
+  .reader-settings-dialog {height:calc(100dvh - 8px);border-radius:9px;}
+}
+/* The same options page is used as a tab and within the reader overlay. */
+.options.embedded-options .options-shell {max-width:1100px;padding:16px 22px 40px;}
+.options.embedded-options .options-header {margin-bottom:16px;}
+.options.embedded-options .options-header h1 {font-size:1.25rem;}
+.options.embedded-options .options-header [data-act="reader"] {display:none;}
+.options.embedded-options .options-grid {gap:16px;grid-template-columns:185px minmax(0,1fr);}
+.options.embedded-options .settings-panel {padding:19px;}
+@media (max-width:720px) {
+  .options.embedded-options .options-shell {padding:10px;}
+  .options.embedded-options .options-grid {grid-template-columns:1fr;}
+  .options.embedded-options .settings-panel {padding:13px;}
+}
+
+
+/* v1.0.45 — The filters and read-all action are in the header; no second toolbar row.
+   Keep every layout's header aligned with the configured article maximum width. */
+.reader .topbar {height:auto;min-height:67px;padding-top:5px;padding-bottom:5px;}
+.reader .topbar-inner {flex-wrap:wrap;column-gap:12px;row-gap:5px;}
+.reader .reader-view-heading {flex:1 1 375px;gap:7px;min-width:0;}
+.reader .reader-view-heading .title-block {flex:0 1 auto;max-width:235px;min-width:70px;}
+.reader .reader-view-heading .reader-view-refresh {width:30px;height:30px;flex:0 0 30px;}
+.reader .reader-heading-filters {display:flex;align-items:center;gap:9px;flex:0 0 auto;min-width:0;}
+.reader .reader-header-filter {width:112px;max-width:112px;min-width:0;height:34px;min-height:34px;padding:5px 8px;background:var(--panel);color:var(--text);border:1px solid var(--edge);border-radius:8px;font-size:12px;cursor:pointer;}
+.reader .reader-heading-filters .unread-first-toggle {font-size:11.5px;gap:6px;line-height:1.15;white-space:nowrap;}
+.reader .top-controls {flex:0 0 auto;min-width:0;margin-left:auto;gap:7px;}
+.reader .reader-header-markall {display:inline-grid;place-items:center;flex:0 0 34px;width:34px;height:34px;margin-left:3px;color:var(--text);background:var(--panel2);border:1px solid var(--edge);border-radius:9px;cursor:pointer;}
+.reader .reader-header-markall:hover {background:var(--hover);color:var(--text);}
+.reader .reader-header-markall svg {width:18px;height:18px;stroke-width:2.3;}
+.reader .reader-header-markall:focus-visible,.reader .reader-header-filter:focus-visible {outline:2px solid var(--accent);outline-offset:2px;}
+.reader:not(.three-pane-mode) .reader-inner {padding-top:13px;}
+.reader.three-pane-mode .reader-inner {padding-top:0;}
+@media (max-width:1100px) {
+  .reader .topbar-inner {column-gap:9px;}
+  .reader .reader-view-heading .title-block {max-width:180px;}
+  .reader .searchbox {width:145px;}
+}
+@media (max-width:720px) {
+  .reader .topbar-inner {flex-wrap:wrap;row-gap:6px;}
+  .reader .reader-view-heading {flex:1 1 100%;justify-content:flex-start;gap:6px;}
+  .reader .reader-view-heading .title-block {flex:1 1 auto;max-width:240px;}
+  .reader .reader-heading-filters {gap:7px;}
+  .reader .reader-header-filter {width:103px;max-width:103px;}
+  .reader .reader-heading-filters .unread-first-toggle {font-size:11px;}
+  .reader .top-controls {margin-left:auto;}
+  .reader .reader-header-markall {flex-basis:31px;width:31px;height:31px;}
+  .reader:not(.three-pane-mode) .reader-inner {padding-top:10px;}
+}
+@media (max-width:530px) {
+  .reader .reader-view-heading {flex-wrap:wrap;}
+  .reader .reader-view-heading .title-block {flex:1 1 100px;}
+  .reader .reader-heading-filters {flex:0 1 auto;}
+  .reader .top-controls .searchbox {width:115px;}
+}
+
+
+/* v1.0.46 — rail navigation and compact sidebar typography/density control. */
+.reader .reader-rail-home.active {background:var(--reader-rail-hover);color:var(--accent);}
+.reader .reader-rail-home.active:hover {color:var(--accent);}
+.reader .sidebar .nav-item {
+  font-size:var(--sidebar-font-size, 12px);
+  min-height:max(var(--sidebar-row-height, 23px), calc(var(--sidebar-font-size, 12px) * 1.5));
+}
+.reader .sidebar .nav-item .nav-name {font-size:var(--sidebar-font-size, 12px);}
+.reader .sidebar .side-bottom {
+  height:10px; min-height:10px; max-height:10px; flex:0 0 10px;
+  box-sizing:border-box; padding:0 7px; margin:0;
+  border-top:0; align-items:center; overflow:visible;
+}
+.reader .sidebar .sidebar-density-control {
+  display:flex; align-items:center; gap:5px; height:10px; min-height:10px; max-height:10px;
+  box-sizing:border-box; padding:0; margin:0; line-height:10px;
+}
+.reader .sidebar .sidebar-density-icon {
+  font-size:9px; line-height:10px; flex:0 0 auto;
+}
+.reader .sidebar .sidebar-density-control input[type="range"] {
+  height:10px; min-height:10px; max-height:10px;
+  margin:0; padding:0; border:0; display:block;
+}
+.reader .sidebar .sidebar-density-control input[type="range"]::-webkit-slider-runnable-track {
+  height:2px;
+}
+.reader .sidebar .sidebar-density-control input[type="range"]::-webkit-slider-thumb {
+  width:10px; height:10px; border-width:1px; margin-top:-4px;
+}
+.reader .sidebar .sidebar-density-control input[type="range"]::-moz-range-track {height:2px;}
+.reader .sidebar .sidebar-density-control input[type="range"]::-moz-range-thumb {
+  width:10px; height:10px; border-width:1px;
+}
+@media(max-width:720px) {
+  .reader .sidebar .side-bottom {display:none;}
+}
+
+/* v1.0.47 — center the entire reader header independently of article max-width.
+   The heading, filters, search and actions keep their natural widths so the
+   complete group centers in the available main area and wraps on narrow screens. */
+.reader .topbar {justify-content:center;}
+.reader .topbar-inner,
+.reader.three-pane-mode .topbar-inner {
+  width:max-content;
+  max-width:100%;
+  margin-inline:auto;
+  padding-inline:clamp(10px, 2vw, 20px);
+  box-sizing:border-box;
+  justify-content:center;
+  align-items:center;
+  column-gap:12px;
+  row-gap:7px;
+}
+.reader .reader-view-heading {flex:0 1 auto; justify-content:center;}
+.reader .top-controls {flex:0 1 auto; margin-left:0; justify-content:center;}
+.reader .reader-header-markall {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  flex:0 0 auto;
+  width:auto;
+  min-width:34px;
+  height:34px;
+  padding:0 11px;
+  white-space:nowrap;
+  font-size:12px;
+  font-weight:600;
+}
+.reader .reader-header-markall svg {flex:0 0 18px;}
+@media (max-width:720px) {
+  .reader .topbar-inner, .reader.three-pane-mode .topbar-inner {column-gap:8px;padding-inline:10px;}
+  .reader .reader-view-heading {flex:0 1 auto;justify-content:center;}
+  .reader .top-controls {margin-inline:0;flex:0 1 auto;}
+  .reader .reader-header-markall {flex:0 0 auto;width:auto;height:31px;padding-inline:9px;}
+}
+@media (max-width:540px) {
+  .reader .reader-view-heading {flex:1 1 100%;}
+  .reader .top-controls {flex-wrap:wrap;}
+}
+
+/* v1.0.58 — expanded density control in the action rail.
+   The panel reaches 400px on tall windows, and shrinks to fit shorter ones.
+   The compactness value remains the existing sidebarCompactness setting. */
+.reader .sidebar .side-list { padding-bottom:12px; }
+.reader .reader-rail-density-toggle { height:29px; min-height:29px; }
+.reader .reader-rail-density-toggle svg { width:18px; height:18px; }
+.reader .reader-rail-density-toggle.active,
+.reader .reader-rail-density-toggle[aria-expanded="true"] {
+  background:var(--reader-rail-hover); color:var(--accent);
+}
+.reader .reader-rail-density-panel {
+  display:flex; flex:0 0 auto; align-items:center; justify-content:center;
+  --rail-density-height:clamp(54px, calc(100dvh - 390px), 400px);
+  width:35px; height:var(--rail-density-height); min-height:54px;
+  margin:0; padding:3px 0; box-sizing:border-box;
+  border:1px solid var(--reader-rail-border); border-radius:9px;
+  background:var(--reader-rail-bg);
+}
+.reader .reader-rail-density-panel[hidden] { display:none !important; }
+.reader .reader-rail-density-label {
+  position:relative; display:block; width:100%; height:100%; cursor:pointer;
+}
+.reader .reader-rail-density-slider {
+  position:absolute; display:block; left:50%; top:50%;
+  width:calc(var(--rail-density-height) - 19px); max-width:381px;
+  height:19px; margin:0; padding:0; border:0;
+  transform:translate(-50%,-50%) rotate(-90deg);
+  background:transparent; appearance:none; -webkit-appearance:none;
+  cursor:pointer; accent-color:var(--accent);
+}
+.reader .reader-rail-density-slider::-webkit-slider-runnable-track {
+  height:4px; border-radius:50px;
+  background:color-mix(in srgb,var(--accent) 50%,var(--reader-rail-border));
+}
+.reader .reader-rail-density-slider::-webkit-slider-thumb {
+  appearance:none; -webkit-appearance:none; width:13px; height:13px;
+  margin-top:-4.5px; border-radius:50%; border:2px solid var(--reader-rail-bg);
+  background:var(--accent); box-shadow:0 0 0 1px var(--reader-rail-border),0 1px 3px #0003;
+}
+.reader .reader-rail-density-slider::-moz-range-track {
+  height:4px; border-radius:50px; background:var(--accent);
+}
+.reader .reader-rail-density-slider::-moz-range-thumb {
+  width:13px; height:13px; border-radius:50%; border:2px solid var(--reader-rail-bg);
+  background:var(--accent);
+}
+.reader .reader-rail-density-slider:focus-visible {
+  outline:2px solid var(--accent); outline-offset:2px; border-radius:7px;
+}
+/* On short windows, avoid covering or displacing the top navigation. */
+@media(max-height:450px) {
+  .reader .reader-rail-top,.reader .reader-rail-bottom {gap:4px;}
+  .reader .reader-rail-density-panel {--rail-density-height:clamp(44px, 25dvh, 100px);min-height:44px;}
+  .reader .reader-action-rail {padding-top:5px;padding-bottom:5px;}
+}
+@media(max-width:720px) {
+  .reader .reader-rail-density-panel {width:34px;}
+}
+
+
+/* v1.0.49 — independent left title/refresh and right-aligned controls. */
+.reader .topbar { justify-content:flex-start; }
+.reader .topbar-inner,
+.reader.three-pane-mode .topbar-inner {
+  width:100%; max-width:none; min-width:0; margin:0;
+  padding-inline:clamp(12px, 1.7vw, 26px);
+  display:flex; align-items:center; justify-content:space-between;
+  gap:8px 12px; flex-wrap:wrap;
+}
+.reader .reader-view-heading,
+.reader.three-pane-mode .reader-view-heading {
+  justify-content:flex-start; flex:0 1 auto; gap:8px; min-width:100px;
+}
+.reader .reader-view-heading .title-block {
+  min-width:0; max-width:min(260px, 32vw); flex:0 1 auto;
+}
+.reader .top-controls {
+  display:flex; align-items:center; justify-content:flex-end;
+  flex:0 1 auto; gap:6px; min-width:0; max-width:100%;
+  margin-left:auto; flex-wrap:wrap; row-gap:7px;
+}
+.reader .topbar-inner .reader-view-refresh,
+.reader .topbar-inner .reader-header-filter,
+.reader .topbar-inner .searchbox,
+.reader .topbar-inner .segmented,
+.reader .topbar-inner .reader-header-markall {
+  box-sizing:border-box; height:34px; min-height:34px;
+}
+.reader .topbar-inner .reader-view-refresh { flex:0 0 34px; width:34px; }
+.reader .topbar-inner .reader-heading-filters { gap:6px; }
+.reader .topbar-inner .searchbox {
+  width:clamp(125px, 10.5vw, 155px);
+  flex:0 1 clamp(125px, 10.5vw, 155px);
+}
+.reader .topbar-inner .searchbox input { height:100%; }
+.reader .topbar-inner .segmented { padding:0; }
+.reader .topbar-inner .segmented button {
+  box-sizing:border-box; height:32px; min-height:32px;
+  width:24px; min-width:24px; flex:0 0 24px;
+  padding:0; border-radius:7px;
+  display:inline-flex; align-items:center; justify-content:center;
+}
+.reader .topbar-inner .reader-header-markall {
+  padding-inline:11px; width:auto; flex:0 0 auto;
+}
+.reader .topbar-inner .unread-first-toggle { min-height:34px; align-items:center; }
+@media(max-width:980px) {
+  .reader .topbar-inner, .reader.three-pane-mode .topbar-inner { gap:7px 9px; }
+}
+@media(max-width:720px) {
+  .reader .reader-view-heading, .reader.three-pane-mode .reader-view-heading {
+    flex:0 1 auto; justify-content:flex-start;
+  }
+  .reader .top-controls { margin-left:auto; justify-content:flex-end; }
+  .reader .topbar-inner .reader-header-markall { height:34px; min-height:34px; }
+}
+@media(max-width:540px) {
+  .reader .reader-view-heading, .reader.three-pane-mode .reader-view-heading { flex:1 1 100%; }
+  .reader .reader-view-heading .title-block { max-width:none; }
+  .reader .top-controls { width:100%; flex:1 1 100%; margin-left:0; justify-content:flex-end; }
+}
+/* Align the metadata and solid vote arrow on one line in both detail views. */
+.reader .post-dialog-sub {
+  display:flex; align-items:center; flex-wrap:wrap;
+  column-gap:5px; row-gap:3px; line-height:18px;
+}
+.reader .post-dialog-sub > span { display:inline-flex; align-items:center; line-height:18px; }
+.reader .post-dialog-sub .vote-up {
+  display:inline-flex; align-items:center; gap:3px; line-height:18px;
+}
+.reader .post-dialog-sub .vote-arrow {
+  width:15px; height:15px; transform:none; vertical-align:middle;
+}
+.reader [data-post-title-background] { cursor:alias; }
+
+
+/* v1.0.51 — search follows the current view refresh action on the left.
+   Filter, unread-first, view modes and mark-read remain on the right. */
+.reader .reader-view-heading,
+.reader.three-pane-mode .reader-view-heading {
+  display:flex; align-items:center; justify-content:flex-start;
+  flex:1 1 auto; min-width:0; gap:8px;
+}
+.reader .reader-view-heading .searchbox {
+  box-sizing:border-box;
+  flex:0 1 170px; width:170px; min-width:115px; max-width:190px;
+  height:34px; min-height:34px; margin-left:4px;
+}
+.reader .reader-view-heading .searchbox input {height:100%;}
+.reader .top-controls {flex:0 1 auto; margin-left:auto; justify-content:flex-end;}
+.reader .topbar-inner .segmented button {
+  box-sizing:border-box;
+  width:34px; min-width:34px; flex:0 0 34px;
+  height:32px; min-height:32px;
+}
+@media (max-width:720px) {
+  .reader .reader-view-heading .searchbox {
+    flex:0 1 150px; width:150px; max-width:150px;
+  }
+  .reader .topbar-inner .segmented button {
+    width:32px; min-width:32px; flex-basis:32px;
+  }
+}
+@media (max-width:540px) {
+  .reader .reader-view-heading {flex-wrap:wrap;}
+  .reader .reader-view-heading .title-block {flex:1 1 100%; max-width:100%;}
+  .reader .reader-view-heading .searchbox {margin-left:0; flex:1 1 135px; max-width:230px;}
+}
+
+
+/* v1.0.52 — counts on the Home / Starred action-rail buttons. Counts
+   sit over the icon's top-right corner, leaving the narrow rail unchanged. */
+.reader {
+  --rail-count-bg:#d9e2eb;
+  --rail-count-ink:#24354d;
+  --rail-count-border:#f5f7fa;
+}
+.reader[data-theme="dark"],
+.reader[data-theme="oled"],
+.reader[data-theme="slate"] {
+  --rail-count-bg:#3a455c;
+  --rail-count-ink:#f6f8ff;
+  --rail-count-border:var(--reader-rail-bg);
+}
+.reader[data-theme="sepia"] {
+  --rail-count-bg:#d6c7ad;
+  --rail-count-ink:#493e2f;
+  --rail-count-border:#e5dac6;
+}
+.reader[data-theme="solarized"] {
+  --rail-count-bg:#d0d1bf;
+  --rail-count-ink:#365359;
+  --rail-count-border:#e4dec8;
+}
+.reader .reader-rail-count {
+  position:absolute;
+  top:-4px;
+  right:-5px;
+  z-index:1;
+  box-sizing:border-box;
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  min-width:16px;
+  height:15px;
+  max-width:none;
+  padding:0 4px;
+  border:1px solid var(--rail-count-border);
+  border-radius:999px;
+  color:var(--rail-count-ink);
+  background:var(--rail-count-bg);
+  font-family:system-ui,sans-serif;
+  font-size:9px;
+  font-weight:700;
+  line-height:1;
+  font-variant-numeric:tabular-nums;
+  white-space:nowrap;
+  pointer-events:none;
+}
+
+/* v1.0.53 — starred posts have a solid yellow star (not just an outlined
+   accent icon). The nav rail's Starred icon remains a navigation indicator. */
+.reader .post-actions button[data-act="star"].active svg,
+.reader .three-pane-actions button[data-act="threePaneStar"].active svg {
+  fill: #facc15;
+  stroke: #a56a04;
+  stroke-width: 1.8;
+}
+.reader[data-theme="dark"] .post-actions button[data-act="star"].active svg,
+.reader[data-theme="oled"] .post-actions button[data-act="star"].active svg,
+.reader[data-theme="slate"] .post-actions button[data-act="star"].active svg,
+.reader[data-theme="dark"] .three-pane-actions button[data-act="threePaneStar"].active svg,
+.reader[data-theme="oled"] .three-pane-actions button[data-act="threePaneStar"].active svg,
+.reader[data-theme="slate"] .three-pane-actions button[data-act="threePaneStar"].active svg {
+  stroke: #ffe082;
+}
+
+/* v1.0.55: Expanded content offers opt-in HoverZoom via a discrete image magnifier.
+   The post title retains a normal text cursor, including middle-click background navigation. */
+.reader .post-dialog-scroll h2[data-post-title-background],
+.reader .three-pane-detail-content h2[data-post-title-background] { cursor: pointer !important; }
+.reader .post-dialog-scroll h2[data-post-title-background]:hover,
+.reader .three-pane-detail-content h2[data-post-title-background]:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.reader [data-post-title-background]:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+.reader .post-dialog-gallery .detail-media-frame {
+  position:relative;display:flex;justify-content:center;align-items:center;
+  width:max-content;max-width:100%;min-width:0;align-self:center;line-height:0;
+}
+.reader .post-dialog-gallery .detail-media-frame > img {
+  display:block;max-width:100%;width:auto;height:auto;max-height:470px;
+  object-fit:contain;cursor:default;
+}
+.reader .three-pane-detail .post-dialog-gallery .detail-media-frame > img { max-height:70vh; }
+.reader .post-dialog-gallery .detail-media-magnifier {
+  position:absolute;z-index:3;top:9px;right:9px;width:31px;height:31px;
+  padding:0;display:grid;place-items:center;border-radius:9px;
+  color:#fff;background:rgba(12,17,27,.80);border:1px solid rgba(255,255,255,.30);
+  box-shadow:0 2px 9px rgba(0,0,0,.25);cursor:zoom-in;
+  opacity:0;pointer-events:none;transition:opacity .12s ease,background .12s ease;
+}
+.reader .post-dialog-gallery .detail-media-frame:hover .detail-media-magnifier,
+.reader .post-dialog-gallery .detail-media-frame:focus-within .detail-media-magnifier {
+  opacity:1;pointer-events:auto;
+}
+.reader .post-dialog-gallery .detail-media-magnifier:hover { background:rgba(18,26,39,.96); }
+.reader .post-dialog-gallery .detail-media-magnifier:focus-visible {outline:2px solid var(--accent);outline-offset:2px;}
+@media(prefers-reduced-motion:reduce){.reader .detail-media-magnifier{transition:none;}}
+/* v1.0.55: WCAG AA normal-text contrast for muted text on both panel surfaces.
+   Verified with actual Chromium computed theme tokens. */
+body:not([data-theme]),body[data-theme="light"] { --muted:#697084; }
+body[data-theme="sepia"] { --muted:#766653; }
+body[data-theme="solarized"] { --muted:#596b73; }
+
+/* Refresh buttons report progress rather than waiting on a long-lived MV3 message. */
+.popup-head [data-act="refresh"].is-refreshing svg,
+.options-shell [data-act="refresh"].is-refreshing svg{animation:sidebar-refresh-spin .85s linear infinite}
+.popup-refresh-feedback{position:fixed;z-index:100;top:64px;left:10px;right:10px;padding:9px 12px;line-height:1.35;font-size:12px;border-radius:9px;background:var(--panel);border:1px solid var(--edge);color:var(--text);box-shadow:var(--shadow)}
+@media(prefers-reduced-motion:reduce){.popup-head [data-act="refresh"].is-refreshing svg,.options-shell [data-act="refresh"].is-refreshing svg{animation:none}}
+
+/* v1.0.57: keep the global All posts/ Todas as publicações label bold. */
+.reader .sidebar .sidebar-all-row > .nav-item .nav-name{font-weight:800!important}
+.reader .sidebar .sidebar-all-row > .nav-item{font-weight:800!important}
+/* Refresh actions are inert only while the shared operation is active. */
+.reader .reader-view-refresh:disabled,.reader .sidebar-all-refresh:disabled,
+.popup .popup-head [data-act="refresh"]:disabled{cursor:default;opacity:.68}
+
+/* v1.0.60 — restore normal Library navigation text size. */
+.reader .sidebar .sidebar-all-row .nav-item .nav-name,
+.reader .sidebar .nav-item[data-select="unread"] .nav-name {
+  font-size:var(--sidebar-font-size, 12px);
+  line-height:1.15;
+}
+/* At extreme compactness the feed text and existing icons remain legible;
+   remove leftover margins so the new minimum density is actually reachable. */
+.reader .sidebar .nav-item {box-sizing:border-box;}
+
+
+/* v1.0.59 — one density control for every row and every sibling gap, at
+   root level and in nested folders. The 8px lower bound is a requested row
+   target; content is allowed to grow rather than clipping readable text. */
+.reader .sidebar .sidebar-tree,
+.reader .sidebar .folder-children {
+  display:flex;
+  flex-direction:column;
+  row-gap:var(--sidebar-item-gap, 2px);
+}
+.reader .sidebar .folder-node > .folder-children {
+  margin-top:var(--sidebar-item-gap, 2px);
+}
+/* Library rows (All Posts / Unread) follow the same density gap. */
+.reader .sidebar .sidebar-all-row {
+  margin-bottom:var(--sidebar-item-gap, 2px);
+}
+.reader .sidebar .nav-item {
+  min-height:max(var(--sidebar-row-height, 23px), var(--sidebar-icon-size, 18px), calc(var(--sidebar-font-size, 12px) * 1.15));
+  padding-top:var(--sidebar-row-padding, 3.25px);
+  padding-bottom:var(--sidebar-row-padding, 3.25px);
+}
+.reader .sidebar .nav-glyph,
+.reader .sidebar .subreddit-favicon,
+.reader .sidebar .subreddit-icon-fallback {
+  width:var(--sidebar-icon-size, 18px);
+  height:var(--sidebar-icon-size, 18px);
+  flex-basis:var(--sidebar-icon-size, 18px);
+}
+.reader .sidebar .subreddit-icon-fallback img {
+  width:calc(var(--sidebar-icon-size, 18px) - 2px);
+  height:calc(var(--sidebar-icon-size, 18px) - 2px);
+}
+.reader .sidebar .nav-folder .nav-glyph svg {
+  width:calc(var(--sidebar-icon-size, 18px) - 2px);
+  height:calc(var(--sidebar-icon-size, 18px) - 2px);
+}
+/* Keep folder dividers responsive to the same spacing, not fixed margins. */
+.reader .sidebar .sidebar-tree .folder-node::after,
+.reader .sidebar .sidebar-tree .feed-node:has(+ .folder-node)::after {
+  margin-top:var(--sidebar-folder-margin, 4px);
+  margin-bottom:var(--sidebar-folder-margin, 4px);
+}
+
+/* v1.0.60 — hover/keyboard highlight spans the entire All Posts row,
+   including refresh and count; nested text button must not paint a smaller box. */
+.reader .sidebar .sidebar-all-row:hover,
+.reader .sidebar .sidebar-all-row:focus-within {
+  background:var(--hover);
+}
+.reader .sidebar .sidebar-all-row:hover > .nav-item,
+.reader .sidebar .sidebar-all-row:focus-within > .nav-item {
+  background:transparent!important;
+}
+.reader .sidebar .sidebar-all-row:has(>.nav-item.active):hover,
+.reader .sidebar .sidebar-all-row:has(>.nav-item.active):focus-within {
+  background:color-mix(in srgb,var(--accent) 19%,var(--panel));
+}
+
+/* v1.0.61: centred custom-colour control and direct pointer colour selection. */
+.article-colour-swatches .article-colour-custom {
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  padding:0!important;line-height:1!important;box-sizing:border-box;vertical-align:middle;
+}
+.article-colour-custom svg{display:block;flex:none;width:15px;height:15px;stroke-width:2.1}
+.article-custom-editor{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.article-custom-editor[hidden]{display:none!important}
+.article-colour-plane{position:relative;width:100%;height:146px;border-radius:8px;touch-action:none;cursor:crosshair;overflow:hidden;
+  background:linear-gradient(to top,#000,transparent),linear-gradient(to right,#fff,transparent),var(--picker-hue,#f00);
+  border:1px solid color-mix(in srgb,var(--text) 16%,transparent)}
+.article-colour-point{pointer-events:none;position:absolute;width:14px;height:14px;border:2px solid white;border-radius:50%;
+  box-shadow:0 0 0 1px #000a,0 1px 5px #0007;transform:translate(-50%,-50%);left:100%;top:0}
+.article-colour-hue-label{display:flex;flex-direction:column;gap:5px;color:var(--muted);font-size:11px}
+.article-colour-hue-label input{width:100%;margin:4px 0 2px;cursor:pointer;accent-color:var(--accent);background:linear-gradient(90deg,red,#ff0,lime,cyan,blue,magenta,red)}
+.article-colour-bottom{display:flex;align-items:center;gap:7px;min-width:0}
+.article-colour-preview{display:block;flex:none;width:28px;height:28px;border-radius:7px;border:1px solid #0004;background:#ffddac}
+.article-colour-bottom .article-colour-hex{flex:1;min-width:75px;max-width:none;padding:6px 7px;text-transform:uppercase;font-size:12px}
+.article-colour-done{border:1px solid var(--edge);border-radius:7px;background:var(--panel2);color:var(--text);font-size:11px;padding:7px 9px;cursor:pointer}
+.article-colour-done:hover{background:var(--hover)}
+.article-colour-plane:focus-visible,.article-colour-custom:focus-visible,.article-colour-done:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* v1.0.62 — diagnostics: compact, theme-aware inventory and rate-limit cards. */
+.options .diag-controls{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin:0 0 14px}
+.options .diag-group{margin:14px 0 18px;padding:14px 16px;border:1px solid var(--edge);border-radius:12px;background:var(--panel2)}
+.options .diag-group h3{font-size:13px;font-weight:750;letter-spacing:.01em;margin:0 0 12px;color:var(--text)}
+.options .diag-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px 15px;margin:0}
+.options .diag-metric{min-width:0;display:flex;flex-direction:column;gap:4px;padding:8px 0;border-bottom:1px solid var(--edge)}
+.options .diag-metric dt{font-size:11px;line-height:1.4;color:var(--muted)}
+.options .diag-metric dd{margin:0;overflow-wrap:anywhere;color:var(--text);font-weight:700;font-size:13px;font-variant-numeric:tabular-nums}
+.options .diag-note{color:var(--muted);font-size:11px;line-height:1.55;margin:8px 0}
+@media(max-width:730px){.options .diag-grid{grid-template-columns:1fr}}
+
+/* Explicit warning for intentionally unencrypted credential exports. */
+.backup-private-warning{border:1px solid color-mix(in srgb,#dc8534 60%,var(--edge));background:color-mix(in srgb,#dc8534 10%,var(--panel));padding:12px 14px;border-radius:10px;margin:14px 0}.backup-private-warning strong{display:block;margin-bottom:6px}
+
+/* v1.0.64 — Give localized article filters enough room, without forcing overflow. */
+.reader .topbar-inner .reader-header-filter {
+  width:clamp(150px, 13.5vw, 195px);
+  max-width:none;
+  min-width:150px;
+  padding-inline:12px 24px;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  flex:0 0 auto;
+}
+@media(max-width:800px) {
+  .reader .topbar-inner .reader-header-filter {width:150px; min-width:150px;}
+}
+
+/* Full-content dialog dimensions are user-controlled viewport percentages.
+   Keep the surrounding backdrop padding consistent with the 100% viewport option. */
+.reader .post-dialog-backdrop { padding:8px; }
+/* The 16px edge safety margin prevents clipping at 100% in small windows. */
+.reader .post-dialog {
+  box-sizing:border-box;
+  width:min(var(--post-dialog-width, 60vw), calc(100vw - 16px));
+  height:min(var(--post-dialog-height, 80vh), calc(100vh - 16px));
+  max-width:none;
+  max-height:calc(100vh - 16px);
+  min-height:0;
+}
+@supports(height:1dvh) {
+  .reader .post-dialog {
+    height:min(var(--post-dialog-height, 80vh), calc(100dvh - 16px));
+    max-height:calc(100dvh - 16px);
+  }
+}
+
+/* Thread colours remain constant for every reply within a top-level thread. */
+.reader .reader-comment {
+  border-left:3px solid var(--comment-thread-colour, var(--accent));
+  background:color-mix(in srgb,var(--comment-thread-colour,var(--accent)) 5%,var(--panel2));
+}
+.reader .reader-comment-body .comment-media-link {
+  display:block; max-width:min(100%,680px); width:fit-content;
+  margin:7px 0 10px; border-radius:10px; overflow:hidden;
+  border:1px solid var(--edge); background:var(--panel2);
+}
+.reader .reader-comment-body .comment-media-link img {
+  display:block; max-width:100%; width:auto; height:auto; max-height:460px;
+  object-fit:contain; background:var(--panel2);
+}
+.reader .reader-comment-body .comment-media-link:focus-visible {
+  outline:2px solid var(--accent);outline-offset:2px;
+}
+
+/* v1.0.65 — X/Twitter-style frosted header: reader posts scroll behind a
+   translucent toolbar, which blurs the live content under it. */
+.reader .main { position:relative; isolation:isolate; }
+.reader .main > .topbar {
+  position:absolute; top:0; left:0; right:0; z-index:12;
+  background:color-mix(in srgb, var(--panel) 79%, transparent);
+  border-bottom:1px solid color-mix(in srgb, var(--edge) 75%, transparent);
+  -webkit-backdrop-filter:blur(16px) saturate(155%);
+  backdrop-filter:blur(16px) saturate(155%);
+}
+.reader .main > .reader-scroller {
+  min-height:0; box-sizing:border-box;
+  padding-top:var(--reader-header-height, 71px);
+  scroll-padding-top:calc(var(--reader-header-height, 71px) + 12px);
+}
+@supports not (backdrop-filter:blur(1px)) {
+  .reader .main > .topbar {background:var(--panel);}
+}
+@media (prefers-reduced-transparency:reduce) {
+  .reader .main > .topbar {background:var(--panel);-webkit-backdrop-filter:none;backdrop-filter:none;}
+}
+
+/* v1.0.68: first-run, explicit optional notification permission request. */
+.notification-onboarding{display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  margin:12px 18px;padding:14px 16px;border-radius:12px;background:var(--panel2);
+  border:1px solid var(--edge);color:var(--text)}
+.notification-onboarding > div{flex:1 1 280px;min-width:220px}
+.notification-onboarding p{margin:5px 0 0;font-size:.88rem;color:var(--muted)}
+.notification-onboarding .btn{white-space:nowrap}
+.drive-restored-review{margin:12px 0;padding:15px}
+.drive-restored-review p{margin:8px 0 12px}
+
+/* Backup-restored unread images: reuse the same colour and slim progress track
+ * as the existing refresh indicator, without obscuring feed controls. */
+.restore-media-indicator{
+ position:fixed;right:14px;bottom:16px;z-index:110;
+ width:min(340px,calc(100vw - 28px));padding:9px 11px 10px;
+ border:1px solid var(--edge);border-radius:10px;
+ color:var(--text);background:var(--panel);
+ box-shadow:0 5px 22px #0003;pointer-events:none;
+ font-size:11px;line-height:1.4;
+}
+.restore-media-indicator[hidden]{display:none!important}
+.restore-media-indicator-heading{font-size:11px;font-weight:700;margin-bottom:3px}
+.restore-media-indicator-message{color:var(--muted);font-size:10px;margin-bottom:7px;white-space:normal}
+.restore-media-indicator .refresh-progress-track{height:4px;border-radius:5px;background:var(--accentFade)}
+.restore-media-indicator .refresh-progress-fill{height:100%;background:var(--accent);border-radius:5px;transition:width .22s ease}
+.restore-media-indicator .refresh-progress-track.is-indeterminate .refresh-progress-fill{width:30%!important;animation:rr-restore-scan 1.5s ease-in-out infinite}
+@keyframes rr-restore-scan{0%{transform:translateX(0)}50%{transform:translateX(230%)}100%{transform:translateX(0)}}
+@media(prefers-reduced-motion:reduce){.restore-media-indicator .refresh-progress-fill{animation:none!important;transition:none}}
+
+/* v1.0.72 — The sidebar displays actual counts, never an abbreviated 999+. */
+.reader .sidebar .nav-item .count { flex:0 0 auto; white-space:nowrap; font-variant-numeric:tabular-nums; }
+/* START LOCAL TTF OVERRIDES - FONT INSTALLER */
+@font-face{font-family:"Reddit Reader Roboto";src:url("fonts/Roboto.ttf") format("truetype");font-style:normal;font-weight:100 900;font-display:swap}
+@font-face{font-family:"Reddit Reader Inter";src:url("fonts/Inter.ttf") format("truetype");font-style:normal;font-weight:100 900;font-display:swap}
+body[data-font=roboto]{font-family:"Reddit Reader Roboto",Roboto,"Segoe UI",Arial,sans-serif}
+body[data-font=inter]{font-family:"Reddit Reader Inter",Inter,"Segoe UI",system-ui,sans-serif}
+body[data-reading-font=roboto]{--reading-font-family:"Reddit Reader Roboto",Roboto,"Segoe UI",Arial,sans-serif}
+body[data-reading-font=inter]{--reading-font-family:"Reddit Reader Inter",Inter,"Segoe UI",system-ui,sans-serif}
+/* END LOCAL TTF OVERRIDES - FONT INSTALLER */

@@ -1,0 +1,37 @@
+/** Single source of truth for font selectors, restore validation and settings.
+ * Entries intentionally reference local fonts; no remote font requests are made.
+ */
+export const FONT_OPTIONS = Object.freeze([
+  ['system', 'System UI'],
+  ['segoe', 'Segoe UI'],
+  ['aptos', 'Aptos'],
+  ['calibri', 'Calibri'],
+  ['candara', 'Candara'],
+  ['corbel', 'Corbel'],
+  ['arial', 'Arial'],
+  ['helvetica', 'Helvetica Neue'],
+  ['verdana', 'Verdana'],
+  ['tahoma', 'Tahoma'],
+  ['trebuchet', 'Trebuchet MS'],
+  ['roboto', 'Roboto'],
+  ['inter', 'Inter'],
+  ['opensans', 'Open Sans'],
+  ['notosans', 'Noto Sans'],
+  ['sourcesans', 'Source Sans 3'],
+  ['lato', 'Lato'],
+  ['montserrat', 'Montserrat'],
+  ['poppins', 'Poppins'],
+  ['nunito', 'Nunito Sans'],
+  ['georgia', 'Georgia'],
+  ['cambria', 'Cambria'],
+  ['palatino', 'Palatino Linotype'],
+  ['garamond', 'Garamond'],
+  ['baskerville', 'Baskerville'],
+  ['times', 'Times New Roman'],
+  ['serif', 'Serif'],
+  ['mono', 'Monospace'],
+  ['consolas', 'Consolas'],
+  ['cascadia', 'Cascadia Code'],
+  ['courier', 'Courier New'],
+]);
+export const FONT_VALUES = new Set(FONT_OPTIONS.map(([value]) => value));
